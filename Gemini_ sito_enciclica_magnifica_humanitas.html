@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnifica Humanitas - Enciclica di Papa Leone XIV</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Elegant Serif and Humanist Sans-Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vaticanGold: '#C9A84C',
+                        vaticanIvory: '#F5F0E8',
+                        vaticanBlue: '#1A2744',
+                        vaticanRed: '#8B1A1A',
+                        vaticanDark: '#0B111E',
+                        vaticanMuted: '#6B7280'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar matching Vatican palette */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B111E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C9A84C;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8B1A1A;
+        }
+        /* Narrative movement labels styling */
+        .movement-badge {
+            transition: all 0.3s ease;
+        }
+        .movement-active {
+            border-color: #C9A84C;
+            color: #C9A84C;
+            background-color: rgba(201, 168, 76, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-vaticanDark text-vaticanIvory font-sans antialiased overflow-x-hidden">
+
+    <!-- FIXED HEADER -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-vaticanDark/95 backdrop-blur-md border-b border-vaticanGold/20 px-4 py-3 md:px-8 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <span class="text-2xl md:text-3xl text-vaticanGold font-serif">🏛️</span>
+            <div>
+                <h1 class="font-serif text-lg md:text-xl font-bold tracking-wide text-vaticanGold">MAGNIFICA HUMANITAS</h1>
+                <p class="text-xs uppercase tracking-widest text-vaticanMuted hidden sm:block">Lettera Enciclica · Leone XIV</p>
+            </div>
+        </div>
+        
+        <!-- Navigation Buttons -->
+        <div class="flex items-center space-x-4">
+            <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="hidden md:flex items-center space-x-2 text-xs md:text-sm border border-vaticanGold/40 hover:bg-vaticanGold hover:text-vaticanDark transition duration-300 px-3 py-1.5 rounded text-vaticanGold">
+                <span>Vatican.va</span>
+                <i class="fas fa-external-link-alt text-[10px]"></i>
+            </a>
+            <button onclick="toggleMobileMenu()" class="text-vaticanGold md:hidden focus:outline-none text-xl p-2">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-vaticanDark/98 z-30 flex flex-col justify-center items-center space-y-6 opacity-0 pointer-events-none transition-all duration-300">
+        <a href="#home" onclick="closeMobileMenu()" class="font-serif text-2xl hover:text-vaticanGold">Home</a>
+        <a href="#sezione1" onclick="closeMobileMenu()" class="font-serif text-2xl hover:text-vaticanGold">1. Babele o Gerusalemme?</a>
+        <a href="#sezione2" onclick="closeMobileMenu()" class="font-serif text-2xl hover:text-vaticanGold">2. Le Radici Storiche</a>
+        <a href="#sezione3" onclick="closeMobileMenu()" class="font-serif text-2xl hover:text-vaticanGold">3. I Fondamenti e Principi</a>
+        <a href="#sezione4" onclick="closeMobileMenu()" class="font-serif text-2xl hover:text-vaticanGold">4. Tecnocrazia e IA</a>
+        <a href="#sezione5" onclick="closeMobileMenu()" class="font-serif text-2xl hover:text-vaticanGold">5. Il Limite è Grandezza</a>
+        <a href="#sezione6" onclick="closeMobileMenu()" class="font-serif text-2xl hover:text-vaticanGold">6. Verità, Lavoro, Libertà</a>
+        <a href="#sezione7" onclick="closeMobileMenu()" class="font-serif text-2xl hover:text-vaticanGold">7. Due Culture</a>
+        <a href="#sezione8" onclick="closeMobileMenu()" class="font-serif text-2xl hover:text-vaticanGold">8. Canto della Speranza</a>
+        <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" target="_blank" class="text-vaticanGold font-serif text-xl border-t border-vaticanGold/20 pt-4 mt-4 flex items-center gap-2">
+            <i class="fa-solid fa-church"></i> Vatican.va
+        </a>
+    </div>
+
+    <!-- STICKY SIDEBAR NAVIGATION (Desktop) -->
+    <aside class="fixed left-6 top-1/2 -translate-y-1/2 z-30 hidden lg:flex flex-col space-y-4 bg-vaticanDark/80 p-4 rounded-xl border border-vaticanGold/10 backdrop-blur-sm">
+        <div class="text-[10px] uppercase tracking-widest text-vaticanMuted text-center font-bold mb-2">Percorso</div>
+        
+        <!-- Sidebar Navigation Points -->
+        <a href="#home" id="nav-dot-0" class="group flex items-center space-x-3 text-vaticanGold" onclick="setActiveNav(0)">
+            <span class="w-3 h-3 rounded-full border border-vaticanGold bg-vaticanGold transition duration-300"></span>
+            <span class="text-xs font-serif opacity-0 group-hover:opacity-100 transition duration-300 absolute left-14 bg-vaticanDark px-2 py-1 border border-vaticanGold/20 rounded shadow-lg whitespace-nowrap">Home</span>
+        </a>
+        <a href="#sezione1" id="nav-dot-1" class="group flex items-center space-x-3 text-vaticanMuted" onclick="setActiveNav(1)">
+            <span class="w-3 h-3 rounded-full border border-vaticanMuted hover:border-vaticanGold transition duration-300"></span>
+            <span class="text-xs font-serif opacity-0 group-hover:opacity-100 transition duration-300 absolute left-14 bg-vaticanDark px-2 py-1 border border-vaticanGold/20 rounded shadow-lg whitespace-nowrap">1. Due Icone, Una Scelta</span>
+        </a>
+        <a href="#sezione2" id="nav-dot-2" class="group flex items-center space-x-3 text-vaticanMuted" onclick="setActiveNav(2)">
+            <span class="w-3 h-3 rounded-full border border-vaticanMuted hover:border-vaticanGold transition duration-300"></span>
+            <span class="text-xs font-serif opacity-0 group-hover:opacity-100 transition duration-300 absolute left-14 bg-vaticanDark px-2 py-1 border border-vaticanGold/20 rounded shadow-lg whitespace-nowrap">2. Le Radici</span>
+        </a>
+        <a href="#sezione3" id="nav-dot-3" class="group flex items-center space-x-3 text-vaticanMuted" onclick="setActiveNav(3)">
+            <span class="w-3 h-3 rounded-full border border-vaticanMuted hover:border-vaticanGold transition duration-300"></span>
+            <span class="text-xs font-serif opacity-0 group-hover:opacity-100 transition duration-300 absolute left-14 bg-vaticanDark px-2 py-1 border border-vaticanGold/20 rounded shadow-lg whitespace-nowrap">3. I Fondamenti</span>
+        </a>
+        <a href="#sezione4" id="nav-dot-4" class="group flex items-center space-x-3 text-vaticanMuted" onclick="setActiveNav(4)">
+            <span class="w-3 h-3 rounded-full border border-vaticanMuted hover:border-vaticanGold transition duration-300"></span>
+            <span class="text-xs font-serif opacity-0 group-hover:opacity-100 transition duration-300 absolute left-14 bg-vaticanDark px-2 py-1 border border-vaticanGold/20 rounded shadow-lg whitespace-nowrap">4. La Sfida IA</span>
+        </a>
+        <a href="#sezione5" id="nav-dot-5" class="group flex items-center space-x-3 text-vaticanMuted" onclick="setActiveNav(5)">
+            <span class="w-3 h-3 rounded-full border border-vaticanMuted hover:border-vaticanGold transition duration-300"></span>
+            <span class="text-xs font-serif opacity-0 group-hover:opacity-100 transition duration-300 absolute left-14 bg-vaticanDark px-2 py-1 border border-vaticanGold/20 rounded shadow-lg whitespace-nowrap">5. Il Limite</span>
+        </a>
+        <a href="#sezione6" id="nav-dot-6" class="group flex items-center space-x-3 text-vaticanMuted" onclick="setActiveNav(6)">
+            <span class="w-3 h-3 rounded-full border border-vaticanMuted hover:border-vaticanGold transition duration-300"></span>
+            <span class="text-xs font-serif opacity-0 group-hover:opacity-100 transition duration-300 absolute left-14 bg-vaticanDark px-2 py-1 border border-vaticanGold/20 rounded shadow-lg whitespace-nowrap">6. Custodire l'Umano</span>
+        </a>
+        <a href="#sezione7" id="nav-dot-7" class="group flex items-center space-x-3 text-vaticanMuted" onclick="setActiveNav(7)">
+            <span class="w-3 h-3 rounded-full border border-vaticanMuted hover:border-vaticanGold transition duration-300"></span>
+            <span class="text-xs font-serif opacity-0 group-hover:opacity-100 transition duration-300 absolute left-14 bg-vaticanDark px-2 py-1 border border-vaticanGold/20 rounded shadow-lg whitespace-nowrap">7. Due Culture</span>
+        </a>
+        <a href="#sezione8" id="nav-dot-8" class="group flex items-center space-x-3 text-vaticanMuted" onclick="setActiveNav(8)">
+            <span class="w-3 h-3 rounded-full border border-vaticanMuted hover:border-vaticanGold transition duration-300"></span>
+            <span class="text-xs font-serif opacity-0 group-hover:opacity-100 transition duration-300 absolute left-14 bg-vaticanDark px-2 py-1 border border-vaticanGold/20 rounded shadow-lg whitespace-nowrap">8. Speranza</span>
+        </a>
+    </aside>
+
+    <!-- Narrative Area Tracker at the top of main content (Desktop indicator) -->
+    <div class="fixed top-16 left-0 w-full z-20 bg-vaticanDark/90 py-2 border-b border-vaticanGold/5 hidden md:flex justify-center space-x-8 text-xs uppercase tracking-widest text-vaticanMuted font-bold">
+        <span id="badge-radici" class="movement-badge border border-transparent px-3 py-1 rounded">I. Radici</span>
+        <span id="badge-sfide" class="movement-badge border border-transparent px-3 py-1 rounded">II. Sfide</span>
+        <span id="badge-costruzione" class="movement-badge border border-transparent px-3 py-1 rounded">III. Costruzione</span>
+    </div>
+
+    <!-- HERO / COPERTINA (SEZIONE 0) -->
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center relative px-6 pt-24 pb-16 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1548625361-155deee223d0?auto=format&fit=crop&w=1600&q=80" 
+                 alt="Vaticano" 
+                 class="w-full h-full object-cover opacity-20 filter brightness-50"
+                 onerror="this.src='https://placehold.co/1600x900/1A2744/C9A84C?text=Pope+Blessing+Crowd+Vatican'">
+            <div class="absolute inset-0 bg-gradient-to-t from-vaticanDark via-vaticanDark/80 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center justify-center h-full">
+            <div class="inline-block border border-vaticanGold/40 text-vaticanGold bg-vaticanGold/10 px-4 py-1.5 rounded-full text-xs uppercase tracking-widest font-bold mb-6 animate-pulse">
+                Lettera Enciclica Sociale · 15 Maggio 2026
+            </div>
+            <h1 class="text-4xl md:text-7xl font-serif text-vaticanGold font-bold mb-4 tracking-tight leading-tight">
+                Magnifica Humanitas
+            </h1>
+            <p class="text-lg md:text-2xl font-serif italic text-vaticanIvory/90 mb-8 max-w-2xl leading-relaxed">
+                "Sulla custodia della persona umana nel tempo dell'intelligenza artificiale"
+            </p>
+            
+            <div class="max-w-xl mx-auto bg-vaticanDark/60 border border-vaticanGold/15 p-6 rounded-lg backdrop-blur-md mb-8">
+                <p class="text-sm text-vaticanMuted uppercase tracking-widest font-bold mb-2">Abstract</p>
+                <p class="text-sm md:text-base leading-relaxed text-vaticanIvory/80">
+                    Nel 2026, mentre il mondo è attraversato dalla rivoluzione dell'intelligenza artificiale, Papa Leone XIV pubblica la sua prima enciclica sociale. Il titolo — <em>Magnifica Humanitas</em> — è un grido di meraviglia e un atto di fede: l'umanità è grande, creata a immagine di Dio, e nessuna macchina potrà mai sostituire la sua dignità. Ma questa grandezza è in pericolo. Il Papa chiama tutti — credenti e non — a fare una scelta: costruire Babele o ricostruire Gerusalemme.
+                </p>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+                <a href="#sezione1" class="w-full sm:w-auto bg-vaticanGold hover:bg-vaticanGold/80 text-vaticanDark font-bold px-6 py-3 rounded-lg flex items-center justify-center space-x-2 transition duration-300">
+                    <span>Inizia il percorso</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="w-full sm:w-auto border border-vaticanGold hover:bg-vaticanGold hover:text-vaticanDark text-vaticanGold font-bold px-6 py-3 rounded-lg flex items-center justify-center space-x-2 transition duration-300">
+                    <span>🏛️ Documento Ufficiale — Vatican.va</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Bottom indicators -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center animate-bounce hidden md:block">
+            <p class="text-[10px] uppercase tracking-widest text-vaticanGold mb-1">Scorri per esplorare</p>
+            <i class="fas fa-chevron-down text-vaticanGold"></i>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-8 py-12 space-y-32">
+
+        <!-- SEZIONE 1: DUE ICONE, UNA SCELTA -->
+        <section id="sezione1" class="scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Image column -->
+                <div class="lg:col-span-5 order-2 lg:order-1 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-vaticanGold to-vaticanRed rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+                    <div class="relative bg-vaticanDark border-2 border-vaticanGold/20 rounded-lg overflow-hidden aspect-[4/3] shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80" 
+                             alt="La Torre di Babele" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x600/1A2744/C9A84C?text=Tower+of+Babel+Painting'">
+                        <div class="absolute bottom-0 left-0 right-0 bg-vaticanDark/90 border-t border-vaticanGold/20 p-2 text-[10px] text-vaticanMuted text-center">
+                            Rappresentazione pittorica drammatica di Babele
+                        </div>
+                    </div>
+                </div>
+                <!-- Text column -->
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-xs uppercase tracking-widest text-vaticanGold font-bold px-2 py-1 bg-vaticanGold/10 border border-vaticanGold/20 rounded">Radici</span>
+                        <span class="text-xs text-vaticanMuted font-medium">Introduzione (nn. 7–10)</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-serif text-vaticanGold font-semibold">
+                        Babele o Gerusalemme? La scelta del nostro tempo
+                    </h2>
+                    <p class="text-base md:text-lg leading-relaxed text-vaticanIvory/90">
+                        Il Papa propone due immagini bibliche come specchio del presente. La <strong>Torre di Babele</strong> (Gen 11) rappresenta la tecnologia senza Dio: potente, omologante, destinata al crollo perché costruita sull'orgoglio e sull'autosufficienza. La <strong>ricostruzione di Gerusalemme</strong> di Neemia (Ne 2–6) rappresenta l'alternativa: un popolo che lavora insieme, ognuno con il proprio tratto di muro, guidato dalla preghiera e dalla responsabilità condivisa. La prima scelta non è tra "sì" e "no" alla tecnologia, ma tra queste due visioni del mondo.
+                    </p>
+                    <blockquote class="border-l-4 border-vaticanGold pl-4 italic text-vaticanGold/90 font-serif text-lg py-1 bg-vaticanGold/5 rounded-r">
+                        "La magnifica umanità creata da Dio si trova oggi di fronte ad una scelta decisiva: innalzare una nuova torre di Babele o edificare la città dove Dio e l'umanità abitano insieme."
+                        <cite class="block text-xs uppercase tracking-widest text-vaticanMuted mt-2 not-italic font-bold">— Introduzione, n. 1</cite>
+                    </blockquote>
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="openReadingMode(1)" class="bg-vaticanGold/10 hover:bg-vaticanGold hover:text-vaticanDark text-vaticanGold font-bold px-4 py-2 border border-vaticanGold/30 rounded transition duration-300">
+                            <i class="fa-solid fa-book-open mr-2"></i> Leggi Approfondimento
+                        </button>
+                        <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" target="_blank" class="text-xs text-vaticanMuted hover:text-vaticanGold underline flex items-center gap-1">
+                            ← Testo originale Vatican.va
+                        </a>
+                    </div>
+                    <!-- Narrative Thread connector -->
+                    <div class="mt-4 p-4 bg-vaticanRed/10 border-l-2 border-vaticanRed rounded-r text-sm text-vaticanIvory/80">
+                        <span class="font-bold text-vaticanGold">Filo conduttore:</span> Per capire cosa scegliere, dobbiamo sapere da dove veniamo: la lunga tradizione di pensiero sociale della Chiesa.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE 2: LE RADICI: LA DOTTRINA SOCIALE DELLA CHIESA -->
+        <section id="sezione2" class="scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Text column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-xs uppercase tracking-widest text-vaticanGold font-bold px-2 py-1 bg-vaticanGold/10 border border-vaticanGold/20 rounded">Radici</span>
+                        <span class="text-xs text-vaticanMuted font-medium">Capitolo 1 (nn. 17–50)</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-serif text-vaticanGold font-semibold">
+                        135 anni di pensiero vivo: dalla Rerum Novarum a oggi
+                    </h2>
+                    <p class="text-base md:text-lg leading-relaxed text-vaticanIvory/90">
+                        Nel 1891 Leone XIII inaugurava la Dottrina sociale della Chiesa con la <strong>Rerum Novarum</strong>, rispondendo alla questione operaia dell'industrializzazione. Da allora, ogni Papa ha aggiunto la sua voce: Pio XI sulla sussidiarietà, Giovanni XXIII sui diritti umani, il Concilio Vaticano II con la <em>Gaudium et Spes</em>, Paolo VI sullo sviluppo dei popoli, Giovanni Paolo II sul lavoro e la libertà, Benedetto XVI sull'amore nella verità, Francesco sull'ecologia integrale. Non è un sistema chiuso: è un <em>corpus</em> vivo che si sviluppa fedele al Vangelo e in dialogo con le scienze.
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="openReadingMode(2)" class="bg-vaticanGold/10 hover:bg-vaticanGold hover:text-vaticanDark text-vaticanGold font-bold px-4 py-2 border border-vaticanGold/30 rounded transition duration-300">
+                            <i class="fa-solid fa-book-open mr-2"></i> Leggi Approfondimento
+                        </button>
+                        <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" target="_blank" class="text-xs text-vaticanMuted hover:text-vaticanGold underline flex items-center gap-1">
+                            ← Testo originale Vatican.va
+                        </a>
+                    </div>
+                    <!-- Narrative Thread connector -->
+                    <div class="mt-4 p-4 bg-vaticanRed/10 border-l-2 border-vaticanRed rounded-r text-sm text-vaticanIvory/80">
+                        <span class="font-bold text-vaticanGold">Filo conduttore:</span> Su quali fondamenta si regge questo pensiero? Ecco i principi irrinunciabili.
+                    </div>
+                </div>
+                
+                <!-- Timeline column -->
+                <div class="lg:col-span-5 relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-vaticanGold to-vaticanRed rounded-lg blur opacity-15"></div>
+                    <div class="relative bg-vaticanDark/80 border border-vaticanGold/20 rounded-xl p-6 shadow-2xl space-y-4">
+                        <h3 class="text-lg font-serif font-bold text-vaticanGold border-b border-vaticanGold/20 pb-2 flex items-center justify-between">
+                            <span>Timeline Dottrina Sociale</span>
+                            <span class="text-xs bg-vaticanGold/10 text-vaticanGold px-2 py-0.5 rounded">Seleziona tappa</span>
+                        </h3>
+                        
+                        <!-- Mini Interactive Timeline Selector -->
+                        <div class="grid grid-cols-4 gap-2 mb-4">
+                            <button onclick="setTimelineYear(1891)" id="tbtn-1891" class="t-btn text-xs font-serif font-bold p-2 bg-vaticanGold text-vaticanDark rounded text-center transition">1891</button>
+                            <button onclick="setTimelineYear(1965)" id="tbtn-1965" class="t-btn text-xs font-serif font-bold p-2 bg-vaticanDark border border-vaticanGold/30 text-vaticanIvory/80 hover:bg-vaticanGold/10 rounded text-center transition">1965</button>
+                            <button onclick="setTimelineYear(2015)" id="tbtn-2015" class="t-btn text-xs font-serif font-bold p-2 bg-vaticanDark border border-vaticanGold/30 text-vaticanIvory/80 hover:bg-vaticanGold/10 rounded text-center transition">2015</button>
+                            <button onclick="setTimelineYear(2026)" id="tbtn-2026" class="t-btn text-xs font-serif font-bold p-2 bg-vaticanDark border border-vaticanGold/30 text-vaticanIvory/80 hover:bg-vaticanGold/10 rounded text-center transition">2026</button>
+                        </div>
+                        
+                        <!-- Timeline Info Display Card -->
+                        <div class="bg-vaticanDark/90 p-4 border border-vaticanGold/10 rounded-lg min-h-[140px] flex flex-col justify-between">
+                            <div>
+                                <h4 id="t-title" class="text-vaticanGold font-serif font-bold text-base">Rerum Novarum (Leone XIII)</h4>
+                                <p id="t-desc" class="text-xs text-vaticanIvory/80 mt-2 leading-relaxed">
+                                    Inaugura la Dottrina sociale della Chiesa in risposta ai profondi mutamenti dell'industrializzazione e alla condizione drammatica degli operai.
+                                </p>
+                            </div>
+                            <span id="t-context" class="text-[10px] text-vaticanMuted uppercase tracking-widest mt-3 block">Modello per la dignità del lavoro umano</span>
+                        </div>
+                        
+                        <div class="relative bg-vaticanDark border border-vaticanGold/20 rounded-lg overflow-hidden aspect-video shadow-lg">
+                            <img id="t-img" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Dottrina Sociale della Chiesa" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE 3: I FONDAMENTI: DIGNITÀ E PRINCIPI -->
+        <section id="sezione3" class="scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Image column -->
+                <div class="lg:col-span-5 order-2 lg:order-1 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-vaticanGold to-vaticanRed rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+                    <div class="relative bg-vaticanDark border-2 border-vaticanGold/20 rounded-lg overflow-hidden aspect-[4/3] shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?auto=format&fit=crop&w=800&q=80" 
+                             alt="Creazione di Adamo" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x600/1A2744/C9A84C?text=Creation+of+Adam'">
+                        <div class="absolute bottom-0 left-0 right-0 bg-vaticanDark/90 border-t border-vaticanGold/20 p-2 text-[10px] text-vaticanMuted text-center">
+                            Dettaglio della Creazione di Adamo di Michelangelo (Cappella Sistina)
+                        </div>
+                    </div>
+                </div>
+                <!-- Text column -->
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-xs uppercase tracking-widest text-vaticanGold font-bold px-2 py-1 bg-vaticanGold/10 border border-vaticanGold/20 rounded">Radici</span>
+                        <span class="text-xs text-vaticanMuted font-medium">Capitolo 2 (nn. 51–95)</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-serif text-vaticanGold font-semibold">
+                        L'essere umano: immagine di Dio, mai strumento
+                    </h2>
+                    <p class="text-base md:text-lg leading-relaxed text-vaticanIvory/90">
+                        Il cuore della Dottrina sociale è l'essere umano come immagine del Dio trinitario: unico, irripetibile, portatore di una dignità che nessun potere può cancellare. Da questo fondamento discendono cinque principi: <strong>bene comune</strong> (il bene di tutti, non solo di alcuni), <strong>destinazione universale dei beni</strong> (la terra è per tutti), <strong>sussidiarietà</strong> (valorizzare ogni livello di responsabilità), <strong>solidarietà</strong> (siamo tutti fratelli), <strong>giustizia sociale</strong> (strutture che rispettino la dignità). Questi principi non sono astratti: sono criteri concreti per giudicare le scelte politiche, economiche e tecnologiche.
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs font-semibold py-2">
+                        <div class="p-2 border border-vaticanGold/10 bg-vaticanDark/50 rounded hover:border-vaticanGold/35 transition">Bene Comune</div>
+                        <div class="p-2 border border-vaticanGold/10 bg-vaticanDark/50 rounded hover:border-vaticanGold/35 transition">Destinazione Beni</div>
+                        <div class="p-2 border border-vaticanGold/10 bg-vaticanDark/50 rounded hover:border-vaticanGold/35 transition">Sussidiarietà</div>
+                        <div class="p-2 border border-vaticanGold/10 bg-vaticanDark/50 rounded hover:border-vaticanGold/35 transition">Solidarietà</div>
+                        <div class="p-2 border border-vaticanGold/10 bg-vaticanDark/50 rounded col-span-2 md:col-span-1 hover:border-vaticanGold/35 transition">Giustizia</div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="openReadingMode(3)" class="bg-vaticanGold/10 hover:bg-vaticanGold hover:text-vaticanDark text-vaticanGold font-bold px-4 py-2 border border-vaticanGold/30 rounded transition duration-300">
+                            <i class="fa-solid fa-book-open mr-2"></i> Leggi Approfondimento
+                        </button>
+                        <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" target="_blank" class="text-xs text-vaticanMuted hover:text-vaticanGold underline flex items-center gap-1">
+                            ← Testo originale Vatican.va
+                        </a>
+                    </div>
+                    <!-- Narrative Thread connector -->
+                    <div class="mt-4 p-4 bg-vaticanRed/10 border-l-2 border-vaticanRed rounded-r text-sm text-vaticanIvory/80">
+                        <span class="font-bold text-vaticanGold">Filo conduttore:</span> Ma oggi questa dignità è minacciata da una forza nuova e pervasiva: il paradigma tecnocratico e l'intelligenza artificiale.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE 4: LA SFIDA: TECNOCRAZIA E INTELLIGENZA ARTIFICIALE -->
+        <section id="sezione4" class="scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Text column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-xs uppercase tracking-widest text-vaticanGold font-bold px-2 py-1 bg-vaticanGold/10 border border-vaticanGold/20 rounded">Sfide</span>
+                        <span class="text-xs text-vaticanMuted font-medium">Capitolo 3 (nn. 96–140)</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-serif text-vaticanGold font-semibold">
+                        Il potere digitale: promesse, rischi e responsabilità
+                    </h2>
+                    <p class="text-base md:text-lg leading-relaxed text-vaticanIvory/90">
+                        L'IA non è né un male né una soluzione magica: è uno strumento che <strong>assume il volto di chi la pensa, la finanzia e la governa</strong>. Il Papa riconosce il suo enorme potenziale (curare, connettere, educare) ma denuncia il rischio del "paradigma tecnocratico": la tendenza a ridurre ogni realtà a dati e prestazioni, a misurare il valore umano in termini di efficienza, a lasciare che pochi attori privati — più potenti di molti governi — decidano il futuro di tutti. L'enciclica chiede trasparenza, responsabilità e una governance globale dell'IA orientata al bene comune.
+                    </p>
+                    <blockquote class="border-l-4 border-vaticanGold pl-4 italic text-vaticanGold/90 font-serif text-lg py-1 bg-vaticanGold/5 rounded-r">
+                        "La tecnologia può curare, connettere, educare, custodire la Casa comune; ma può anche dividere, scartare, generare nuove ingiustizie."
+                        <cite class="block text-xs uppercase tracking-widest text-vaticanMuted mt-2 not-italic font-bold">— Introduzione, n. 9</cite>
+                    </blockquote>
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="openReadingMode(4)" class="bg-vaticanGold/10 hover:bg-vaticanGold hover:text-vaticanDark text-vaticanGold font-bold px-4 py-2 border border-vaticanGold/30 rounded transition duration-300">
+                            <i class="fa-solid fa-book-open mr-2"></i> Leggi Approfondimento
+                        </button>
+                        <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" target="_blank" class="text-xs text-vaticanMuted hover:text-vaticanGold underline flex items-center gap-1">
+                            ← Testo originale Vatican.va
+                        </a>
+                    </div>
+                    <!-- Narrative Thread connector -->
+                    <div class="mt-4 p-4 bg-vaticanRed/10 border-l-2 border-vaticanRed rounded-r text-sm text-vaticanIvory/80">
+                        <span class="font-bold text-vaticanGold">Filo conduttore:</span> Ma c'è di più: alcune correnti di pensiero vogliono andare oltre l'umano. Il Papa risponde con una visione alternativa di grandezza.
+                    </div>
+                </div>
+                <!-- Image column -->
+                <div class="lg:col-span-5 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-vaticanGold to-vaticanRed rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+                    <div class="relative bg-vaticanDark border-2 border-vaticanGold/20 rounded-lg overflow-hidden aspect-[4/3] shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80" 
+                             alt="Rete Neurale e Intelligenza Artificiale" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x600/1A2744/C9A84C?text=Neural+Network+AI'">
+                        <div class="absolute bottom-0 left-0 right-0 bg-vaticanDark/90 border-t border-vaticanGold/20 p-2 text-[10px] text-vaticanMuted text-center">
+                            Flussi e connessioni di circuiti e reti neurali artificiali
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE 5: IL LIMITE È GRANDEZZA: CONTRO IL POSTUMANESIMO -->
+        <section id="sezione5" class="scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Image column -->
+                <div class="lg:col-span-5 order-2 lg:order-1 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-vaticanGold to-vaticanRed rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+                    <div class="relative bg-vaticanDark border-2 border-vaticanGold/20 rounded-lg overflow-hidden aspect-[4/3] shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=800&q=80" 
+                             alt="Spiritual Transcendence Light" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x600/1A2744/C9A84C?text=Spiritual+Transcendence+Light'">
+                        <div class="absolute bottom-0 left-0 right-0 bg-vaticanDark/90 border-t border-vaticanGold/20 p-2 text-[10px] text-vaticanMuted text-center">
+                            Luce trascendente che delinea la sagoma della figura umana
+                        </div>
+                    </div>
+                </div>
+                <!-- Text column -->
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-xs uppercase tracking-widest text-vaticanGold font-bold px-2 py-1 bg-vaticanGold/10 border border-vaticanGold/20 rounded">Sfide</span>
+                        <span class="text-xs text-vaticanMuted font-medium">Capitolo 3, Sezione "Ciò che non possiamo perdere" (nn. 120–140)</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-serif text-vaticanGold font-semibold">
+                        Transumano o pienamente umano? La risposta cristiana
+                    </h2>
+                    <p class="text-base md:text-lg leading-relaxed text-vaticanIvory/90">
+                        Transumanesimo e postumanesimo promettono di "migliorare" l'essere umano fino a superarne i limiti biologici, cognitivi, persino morali. Il Papa risponde con fermezza: il limite non è un errore da correggere, ma parte della grandezza umana. È nella <strong>fragilità</strong> che si manifesta la forza (2 Cor 12,9), è nell'amore — non nel potenziamento — che l'essere umano trova la sua pienezza. Il "più che umano" cristiano non è l'uomo potenziato dalle macchine, ma l'essere umano abitato dalla grazia: la <em>magnifica humanitas</em> rivelata in Cristo.
+                    </p>
+                    <blockquote class="border-l-4 border-vaticanGold pl-4 italic text-vaticanGold/90 font-serif text-lg py-1 bg-vaticanGold/5 rounded-r">
+                        "Ciò che non possiamo perdere: il limite, il cuore, la grandezza dell'essere umano."
+                        <cite class="block text-xs uppercase tracking-widest text-vaticanMuted mt-2 not-italic font-bold">— Capitolo 3, titolo di sezione</cite>
+                    </blockquote>
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="openReadingMode(5)" class="bg-vaticanGold/10 hover:bg-vaticanGold hover:text-vaticanDark text-vaticanGold font-bold px-4 py-2 border border-vaticanGold/30 rounded transition duration-300">
+                            <i class="fa-solid fa-book-open mr-2"></i> Leggi Approfondimento
+                        </button>
+                        <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" target="_blank" class="text-xs text-vaticanMuted hover:text-vaticanGold underline flex items-center gap-1">
+                            ← Testo originale Vatican.va
+                        </a>
+                    </div>
+                    <!-- Narrative Thread connector -->
+                    <div class="mt-4 p-4 bg-vaticanRed/10 border-l-2 border-vaticanRed rounded-r text-sm text-vaticanIvory/80">
+                        <span class="font-bold text-vaticanGold">Filo conduttore:</span> Come proteggere concretamente l'umano? Il Papa indica tre pilastri: la verità, il lavoro, la libertà.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE 6: CUSTODIRE L'UMANO: VERITÀ, LAVORO, LIBERTÀ -->
+        <section id="sezione6" class="scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Text column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-xs uppercase tracking-widest text-vaticanGold font-bold px-2 py-1 bg-vaticanGold/10 border border-vaticanGold/20 rounded">Costruzione</span>
+                        <span class="text-xs text-vaticanMuted font-medium">Capitolo 4 (nn. 141–210)</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-serif text-vaticanGold font-semibold">
+                        Tre pilastri per un'era digitale a misura d'uomo
+                    </h2>
+                    <p class="text-base md:text-lg leading-relaxed text-vaticanIvory/90">
+                        Il Papa declina la custodia dell'umano in tre ambiti concreti. <strong>Verità</strong>: nell'epoca della disinformazione e dell'immaginario manipolato dall'IA, serve un'ecologia della comunicazione e un'alleanza educativa che formi pensatori critici, non consumatori passivi. <strong>Lavoro</strong>: la transizione digitale non può lasciare indietro nessuno; il lavoro è dignità, non solo reddito, e un'economia giusta valorizza ogni persona. <strong>Libertà</strong>: nuove dipendenze digitali e forme di controllo sociale minacciano l'autonomia; spezzare le catene delle "nuove schiavitù" è un imperativo morale e politico.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="openReadingMode(6)" class="bg-vaticanGold/10 hover:bg-vaticanGold hover:text-vaticanDark text-vaticanGold font-bold px-4 py-2 border border-vaticanGold/30 rounded transition duration-300">
+                            <i class="fa-solid fa-book-open mr-2"></i> Leggi Approfondimento
+                        </button>
+                        <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" target="_blank" class="text-xs text-vaticanMuted hover:text-vaticanGold underline flex items-center gap-1">
+                            ← Testo originale Vatican.va
+                        </a>
+                    </div>
+                    <!-- Narrative Thread connector -->
+                    <div class="mt-4 p-4 bg-vaticanRed/10 border-l-2 border-vaticanRed rounded-r text-sm text-vaticanIvory/80">
+                        <span class="font-bold text-vaticanGold">Filo conduttore:</span> Ma tutto questo richiede anche di scegliere tra due culture globali radicalmente opposte.
+                    </div>
+                </div>
+                <!-- Image column -->
+                <div class="lg:col-span-5 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-vaticanGold to-vaticanRed rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+                    <div class="relative bg-vaticanDark border-2 border-vaticanGold/20 rounded-lg overflow-hidden aspect-[4/3] shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80" 
+                             alt="Bilancia della Giustizia" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x600/1A2744/C9A84C?text=Scales+of+Justice'">
+                        <div class="absolute bottom-0 left-0 right-0 bg-vaticanDark/90 border-t border-vaticanGold/20 p-2 text-[10px] text-vaticanMuted text-center">
+                            La bilancia della giustizia quale simbolo di tutela dell'ordine sociale ed etico
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE 7: DUE CULTURE: POTENZA O AMORE? -->
+        <section id="sezione7" class="scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Image column -->
+                <div class="lg:col-span-5 order-2 lg:order-1 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-vaticanGold to-vaticanRed rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+                    <div class="relative bg-vaticanDark border-2 border-vaticanGold/20 rounded-lg overflow-hidden aspect-[4/3] shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80" 
+                             alt="Simbolo di Pace" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x600/1A2744/C9A84C?text=Dove+of+Peace'">
+                        <div class="absolute bottom-0 left-0 right-0 bg-vaticanDark/90 border-t border-vaticanGold/20 p-2 text-[10px] text-vaticanMuted text-center">
+                            Incontri di luce e prospettive globali a evocare l'abbraccio della pace
+                        </div>
+                    </div>
+                </div>
+                <!-- Text column -->
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-xs uppercase tracking-widest text-vaticanGold font-bold px-2 py-1 bg-vaticanGold/10 border border-vaticanGold/20 rounded">Costruzione</span>
+                        <span class="text-xs text-vaticanMuted font-medium">Capitolo 5 (nn. 211–270)</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-serif text-vaticanGold font-semibold">
+                        La civiltà dell'amore contro la cultura della potenza
+                    </h2>
+                    <p class="text-base md:text-lg leading-relaxed text-vaticanIvory/90">
+                        Il Papa identifica una "cultura della potenza" che permea il mondo contemporaneo: normalizzazione della guerra, uso dell'IA nelle armi autonome, crisi del multilateralismo, arroganza dei potenti. A questa contrappone la <strong>civiltà dell'amore</strong> — visione di Paolo VI, ripresa e attualizzata — che si costruisce disarmando le parole, assumendo lo sguardo delle vittime, coltivando la diplomazia, rilanciando il dialogo tra nazioni. La pace non è utopia: è un progetto che richiede coraggio politico, realismo spirituale e la volontà di tutti.
+                    </p>
+                    <blockquote class="border-l-4 border-vaticanGold pl-4 italic text-vaticanGold/90 font-serif text-lg py-1 bg-vaticanGold/5 rounded-r">
+                        "Il vero progresso nasce sempre da un cuore aperto all'altro, da un'intelligenza disponibile all'ascolto."
+                        <cite class="block text-xs uppercase tracking-widest text-vaticanMuted mt-2 not-italic font-bold">— Introduzione, n. 15</cite>
+                    </blockquote>
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="openReadingMode(7)" class="bg-vaticanGold/10 hover:bg-vaticanGold hover:text-vaticanDark text-vaticanGold font-bold px-4 py-2 border border-vaticanGold/30 rounded transition duration-300">
+                            <i class="fa-solid fa-book-open mr-2"></i> Leggi Approfondimento
+                        </button>
+                        <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" target="_blank" class="text-xs text-vaticanMuted hover:text-vaticanGold underline flex items-center gap-1">
+                            ← Testo originale Vatican.va
+                        </a>
+                    </div>
+                    <!-- Narrative Thread connector -->
+                    <div class="mt-4 p-4 bg-vaticanRed/10 border-l-2 border-vaticanRed rounded-r text-sm text-vaticanIvory/80">
+                        <span class="font-bold text-vaticanGold">Filo conduttore:</span> Come concludere? Con una chiamata a tutti: il cantiere del nostro tempo è aperto.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE 8: IL CANTO DELLA SPERANZA: CONCLUSIONE -->
+        <section id="sezione8" class="scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Text column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-xs uppercase tracking-widest text-vaticanGold font-bold px-2 py-1 bg-vaticanGold/10 border border-vaticanGold/20 rounded">Costruzione</span>
+                        <span class="text-xs text-vaticanMuted font-medium">Conclusione (nn. 271–285)</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-serif text-vaticanGold font-semibold">
+                        Costruttori di comunione, non architetti di Babele
+                    </h2>
+                    <p class="text-base md:text-lg leading-relaxed text-vaticanIvory/90">
+                        Il Papa chiude con il Magnificat: il canto di Maria, donna che ha accolto il Verbo fatto carne, diventa il modello per ogni essere umano chiamato a fare spazio a Dio nella storia. La conclusione è un appello appassionato: non temiamo di sporcarci le mani nel cantiere del nostro tempo. Come Neemia, preghiamo, progettiamo con sapienza, lavoriamo con perseveranza. Le pietre scartate — i poveri, i malati, i migranti — diventeranno testata d'angolo. La <em>magnifica humanitas</em> non è un sogno: è il compito che ci attende.
+                    </p>
+                    <blockquote class="border-l-4 border-vaticanGold pl-4 italic text-vaticanGold/90 font-serif text-lg py-1 bg-vaticanGold/5 rounded-r">
+                        "Non temiamo di sporcarci le mani nel cantiere del nostro tempo."
+                        <cite class="block text-xs uppercase tracking-widest text-vaticanMuted mt-2 not-italic font-bold">— Introduzione, n. 16</cite>
+                    </blockquote>
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="openReadingMode(8)" class="bg-vaticanGold/10 hover:bg-vaticanGold hover:text-vaticanDark text-vaticanGold font-bold px-4 py-2 border border-vaticanGold/30 rounded transition duration-300">
+                            <i class="fa-solid fa-book-open mr-2"></i> Leggi Approfondimento
+                        </button>
+                        <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" target="_blank" class="text-xs text-vaticanMuted hover:text-vaticanGold underline flex items-center gap-1">
+                            ← Testo originale Vatican.va
+                        </a>
+                    </div>
+                </div>
+                <!-- Image column -->
+                <div class="lg:col-span-5 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-vaticanGold to-vaticanRed rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+                    <div class="relative bg-vaticanDark border-2 border-vaticanGold/20 rounded-lg overflow-hidden aspect-[4/3] shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80" 
+                             alt="Alba e Comunità" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x600/1A2744/C9A84C?text=Sunrise+and+Community'">
+                        <div class="absolute bottom-0 left-0 right-0 bg-vaticanDark/90 border-t border-vaticanGold/20 p-2 text-[10px] text-vaticanMuted text-center">
+                            La luce dell'alba illumina una comunità unita nello sforzo cooperativo
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAPPA TEMATICA INTERATTIVA (Sezione Integrativa nel finale) -->
+        <section class="border-t border-vaticanGold/20 pt-16 scroll-mt-24">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-xs uppercase tracking-widest text-vaticanGold font-bold px-2.5 py-1 bg-vaticanGold/10 border border-vaticanGold/20 rounded-full">Sintesi Grafica</span>
+                <h3 class="text-2xl md:text-4xl font-serif text-vaticanGold font-semibold mt-4">Mappa Tematica dell'Enciclica</h3>
+                <p class="text-vaticanMuted text-sm mt-2">Fai clic su qualsiasi tema per saltare direttamente alla sezione corrispondente e seguirne il percorso logico.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card Radici -->
+                <div class="bg-vaticanDark/60 border border-vaticanGold/15 rounded-xl p-6 relative group hover:border-vaticanGold/45 transition duration-300">
+                    <div class="text-vaticanGold font-serif text-xl font-bold border-b border-vaticanGold/20 pb-2 mb-4 flex items-center justify-between">
+                        <span>I. LE RADICI</span>
+                        <i class="fa-solid fa-circle-nodes text-xs"></i>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="#sezione1" class="hover:text-vaticanGold flex items-center gap-2 text-vaticanIvory/80 transition">
+                                <span class="text-vaticanGold">●</span> Due Icone: Babele o Gerusalemme
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#sezione2" class="hover:text-vaticanGold flex items-center gap-2 text-vaticanIvory/80 transition">
+                                <span class="text-vaticanGold">●</span> Rerum Novarum & Dottrina Sociale
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#sezione3" class="hover:text-vaticanGold flex items-center gap-2 text-vaticanIvory/80 transition">
+                                <span class="text-vaticanGold">●</span> I Fondamenti: Dignità Trinitaria
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card Sfide -->
+                <div class="bg-vaticanDark/60 border border-vaticanGold/15 rounded-xl p-6 relative group hover:border-vaticanGold/45 transition duration-300">
+                    <div class="text-vaticanGold font-serif text-xl font-bold border-b border-vaticanGold/20 pb-2 mb-4 flex items-center justify-between">
+                        <span>II. LE SFIDE</span>
+                        <i class="fa-solid fa-triangle-exclamation text-xs"></i>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="#sezione4" class="hover:text-vaticanGold flex items-center gap-2 text-vaticanIvory/80 transition">
+                                <span class="text-vaticanGold">●</span> Il Paradigma Tecnocratico dell'IA
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#sezione5" class="hover:text-vaticanGold flex items-center gap-2 text-vaticanIvory/80 transition">
+                                <span class="text-vaticanGold">●</span> Confutazione del Postumanesimo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card Costruzione -->
+                <div class="bg-vaticanDark/60 border border-vaticanGold/15 rounded-xl p-6 relative group hover:border-vaticanGold/45 transition duration-300">
+                    <div class="text-vaticanGold font-serif text-xl font-bold border-b border-vaticanGold/20 pb-2 mb-4 flex items-center justify-between">
+                        <span>III. LA COSTRUZIONE</span>
+                        <i class="fa-solid fa-tools text-xs"></i>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="#sezione6" class="hover:text-vaticanGold flex items-center gap-2 text-vaticanIvory/80 transition">
+                                <span class="text-vaticanGold">●</span> Verità, Lavoro Libero e Digitale
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#sezione7" class="hover:text-vaticanGold flex items-center gap-2 text-vaticanIvory/80 transition">
+                                <span class="text-vaticanGold">●</span> Civiltà dell'Amore contro Potenza
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#sezione8" class="hover:text-vaticanGold flex items-center gap-2 text-vaticanIvory/80 transition">
+                                <span class="text-vaticanGold">●</span> Appello ed edificazione di Gerusalemme
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER WITH VATICAN CREDENTIALS -->
+    <footer class="bg-[#0D1527] border-t border-vaticanGold/20 mt-24 py-16 px-6">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <div class="flex justify-center items-center space-x-4">
+                <span class="text-4xl text-vaticanGold">🏛️</span>
+                <span class="text-3xl text-vaticanGold font-serif">·</span>
+                <span class="text-4xl text-vaticanGold">✠</span>
+            </div>
+            
+            <div class="space-y-3">
+                <h4 class="text-vaticanGold font-serif text-2xl tracking-wide font-bold">DOCUMENTO UFFICIALE</h4>
+                <p class="text-vaticanIvory/80 max-w-lg mx-auto leading-relaxed text-sm">
+                    Lettera Enciclica <strong>"Magnifica Humanitas"</strong> di Papa Leone XIV sulla custodia della persona umana nel tempo dell'intelligenza artificiale, emanata in data 15 maggio 2026, nel 135° anniversario della <em>Rerum Novarum</em>.
+                </p>
+            </div>
+
+            <div class="pt-4">
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="inline-block bg-vaticanGold hover:bg-vaticanGold/80 text-vaticanDark font-serif font-bold px-8 py-3 rounded shadow-lg transition duration-300">
+                    Leggi su Vatican.va →
+                </a>
+            </div>
+
+            <div class="border-t border-vaticanGold/10 pt-8 text-xs text-vaticanMuted space-y-2">
+                <p>vatican.va · © Libreria Editrice Vaticana</p>
+                <p class="max-w-md mx-auto leading-relaxed">
+                    Sito navigabile e ragionato ad uso didattico e informativo sul magistero sociale della Chiesa nel ventunesimo secolo.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- READING MODE MODAL -->
+    <div id="reading-modal" class="fixed inset-0 z-50 bg-vaticanDark/95 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 overflow-y-auto flex justify-center items-start py-10 px-4">
+        <div class="bg-[#0D1527] border border-vaticanGold/30 max-w-3xl w-full rounded-xl p-6 md:p-10 shadow-2xl relative space-y-6">
+            
+            <!-- Close button -->
+            <button onclick="closeReadingMode()" class="absolute top-4 right-4 text-vaticanGold hover:text-vaticanRed text-2xl transition focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <!-- Modal Header -->
+            <div class="border-b border-vaticanGold/20 pb-4">
+                <p id="modal-category" class="text-xs uppercase tracking-widest text-vaticanGold font-bold mb-1"></p>
+                <h3 id="modal-title" class="text-3xl md:text-4xl font-serif text-vaticanGold font-bold"></h3>
+                <p id="modal-sub" class="text-xs text-vaticanMuted mt-1"></p>
+            </div>
+            
+            <!-- Modal Body Text -->
+            <div id="modal-content" class="text-base md:text-lg leading-relaxed text-vaticanIvory/95 space-y-4 font-serif">
+                <!-- Dinamic content loaded via JS -->
+            </div>
+            
+            <!-- Close Modal action -->
+            <div class="border-t border-vaticanGold/20 pt-6 flex justify-between items-center text-sm">
+                <a id="modal-external-link" href="" target="_blank" class="text-vaticanGold hover:underline flex items-center gap-1.5 font-sans font-medium">
+                    <i class="fa-solid fa-file-invoice"></i> Leggi testo integrale su Vatican.va
+                </a>
+                <button onclick="closeReadingMode()" class="bg-vaticanGold hover:bg-vaticanGold/80 text-vaticanDark font-bold px-4 py-2 rounded transition">
+                    Chiudi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Official vatican link
+        const VATICAN_URL = "https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html";
+
+        // Navigation elements tracking
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('opacity-0')) {
+                menu.classList.remove('opacity-0', 'pointer-events-none');
+                menu.classList.add('opacity-100');
+                icon.className = "fas fa-times";
+            } else {
+                closeMobileMenu();
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.add('opacity-0', 'pointer-events-none');
+            menu.classList.remove('opacity-100');
+            icon.className = "fas fa-bars";
+        }
+
+        // Active side dot tracking on click
+        function setActiveNav(index) {
+            for (let i = 0; i <= 8; i++) {
+                const dot = document.getElementById(`nav-dot-${i}`);
+                if (dot) {
+                    if (i === index) {
+                        dot.className = "group flex items-center space-x-3 text-vaticanGold";
+                        dot.children[0].className = "w-3 h-3 rounded-full border border-vaticanGold bg-vaticanGold transition duration-300";
+                    } else {
+                        dot.className = "group flex items-center space-x-3 text-vaticanMuted";
+                        dot.children[0].className = "w-3 h-3 rounded-full border border-vaticanMuted hover:border-vaticanGold transition duration-300";
+                    }
+                }
+            }
+        }
+
+        // Scroll spy to dynamically change navigation HUD and dots
+        window.addEventListener('scroll', () => {
+            const sections = [
+                { id: 'home', index: 0, movement: '' },
+                { id: 'sezione1', index: 1, movement: 'radici' },
+                { id: 'sezione2', index: 2, movement: 'radici' },
+                { id: 'sezione3', index: 3, movement: 'radici' },
+                { id: 'sezione4', index: 4, movement: 'sfide' },
+                { id: 'sezione5', index: 5, movement: 'sfide' },
+                { id: 'sezione6', index: 6, movement: 'costruzione' },
+                { id: 'sezione7', index: 7, movement: 'costruzione' },
+                { id: 'sezione8', index: 8, movement: 'costruzione' },
+            ];
+
+            let currentSectionId = 'home';
+            let currentMovement = '';
+            let currentIndex = 0;
+
+            sections.forEach(sec => {
+                const el = document.getElementById(sec.id);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    // Detect which section occupies the main screen area
+                    if (rect.top <= window.innerHeight * 0.4 && rect.bottom >= window.innerHeight * 0.4) {
+                        currentSectionId = sec.id;
+                        currentMovement = sec.movement;
+                        currentIndex = sec.index;
+                    }
+                }
+            });
+
+            // Update Navigation Dots
+            setActiveNav(currentIndex);
+
+            // Update Movement Badges in the fixed second bar
+            const badges = {
+                'radici': document.getElementById('badge-radici'),
+                'sfide': document.getElementById('badge-sfide'),
+                'costruzione': document.getElementById('badge-costruzione')
+            };
+
+            Object.keys(badges).forEach(key => {
+                if (badges[key]) {
+                    if (key === currentMovement) {
+                        badges[key].classList.add('movement-active');
+                    } else {
+                        badges[key].classList.remove('movement-active');
+                    }
+                }
+            });
+        });
+
+        // Timeline dataset and interactions
+        const timelineData = {
+            1891: {
+                title: "Rerum Novarum (Leone XIII)",
+                desc: "Inaugura la Dottrina sociale della Chiesa in risposta ai profondi mutamenti dell'industrializzazione, alla condizione drammatica degli operai e alle ideologie materialistiche incipienti.",
+                context: "La dignità del lavoratore e la proprietà privata subordinata al bene comune.",
+                img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=600&q=80"
+            },
+            1965: {
+                title: "Gaudium et Spes (Vaticano II)",
+                desc: "La Costituzione pastorale sulla Chiesa nel mondo contemporaneo. Ridefinisce i rapporti tra Chiesa e mondo moderno basandosi sulla centralità della persona umana.",
+                context: "Rapporto dialogico con le scienze e la dignità intatta in ogni ambiente.",
+                img: "https://images.unsplash.com/photo-1548625361-155deee223d0?auto=format&fit=crop&w=600&q=80"
+            },
+            2015: {
+                title: "Laudato Si' (Francesco)",
+                desc: "Un grido d'allarme globale per l'ambiente unito alla denuncia sociale. Introduce la categoria dell'ecologia integrale, mostrando l'intima connessione tra il grido dei poveri e quello della Terra.",
+                context: "Un'economia rigeneratrice contro la cultura dello scarto tecnologico.",
+                img: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80"
+            },
+            2026: {
+                title: "Magnifica Humanitas (Leone XIV)",
+                desc: "Risponde sistematicamente alla transizione tecnologica indotta dall'intelligenza artificiale generativa e dal paradigma postumanista, richiamando la necessità di un'algoretica globale.",
+                context: "Custodia della persona e del limite umano nell'epoca sintetica.",
+                img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80"
+            }
+        };
+
+        function setTimelineYear(year) {
+            const data = timelineData[year];
+            if (!data) return;
+
+            // Update text elements
+            document.getElementById('t-title').innerText = data.title;
+            document.getElementById('t-desc').innerText = data.desc;
+            document.getElementById('t-context').innerText = data.context;
+            
+            // Image fallback control
+            const imgEl = document.getElementById('t-img');
+            imgEl.src = data.img;
+
+            // Toggle button styles
+            const years = [1891, 1965, 2015, 2026];
+            years.forEach(y => {
+                const btn = document.getElementById(`tbtn-${y}`);
+                if (btn) {
+                    if (y === year) {
+                        btn.className = "t-btn text-xs font-serif font-bold p-2 bg-vaticanGold text-vaticanDark rounded text-center transition";
+                    } else {
+                        btn.className = "t-btn text-xs font-serif font-bold p-2 bg-vaticanDark border border-vaticanGold/30 text-vaticanIvory/80 hover:bg-vaticanGold/10 rounded text-center transition";
+                    }
+                }
+            });
+        }
+
+        // Reading mode content database for deep-dives
+        const readingDatabase = {
+            1: {
+                category: "Radici",
+                title: "La Scelta del Nostro Tempo",
+                sub: "Introduzione (nn. 7–10) · Babele o Gerusalemme?",
+                content: `
+                    <p class="mb-4">Papa Leone XIV si serve di una dialettica biblica collaudata per inquadrare la portata storica della transizione digitale dell'Intelligenza Artificiale. Il contrasto non è tra il favore o la condanna verso il progresso tecnico, bensì tra due finalità antropologiche complessive.</p>
+                    <p class="mb-4">La <strong>Torre di Babele</strong> incarna la spinta prometeica a eliminare il limite, a uniformare le culture entro un unico idioma tecnologico privatizzato e a sostituire il discernimento umano con protocolli artificiali. È una spinta destinata alla frammentazione sociale proprio perché esclude la relazione e l'ascolto.</p>
+                    <p class="mb-4">La <strong>ricostruzione di Gerusalemme</strong> ad opera di Neemia è l'icona della sussidiarietà attiva: ciascuno ricostruisce davanti alla propria porta, coordinato da un bene comune che unisce e non sopprime le differenze. L'enciclica chiama ad un'alleanza etica affinché l'IA sia strumento del cantiere di Gerusalemme e non l'ennesimo mattone di Babele.</p>
+                `
+            },
+            2: {
+                category: "Radici",
+                title: "La Tradizione Come Forza Viva",
+                sub: "Capitolo 1 (nn. 17–50) · Evoluzione storico-magisteriale",
+                content: `
+                    <p class="mb-4">L'enciclica colloca se stessa nel solco luminoso della Dottrina Sociale della Chiesa (DSC), nata per dare risposte alla rivoluzione industriale nel 1891. Il documento mostra come le sfide odierne della digitalizzazione, della svalutazione del lavoro e della governance algoritmica non siano scollegate dal passato, ma ereditino dinamiche già ampiamente analizzate dai Pontefici precedenti.</p>
+                    <p class="mb-4">Dalla centralità dello Stato sociale in <em>Rerum Novarum</em>, passando per la sussidiarietà di <em>Quadragesimo Anno</em>, fino alla transizione ecologica integrale di <em>Laudato Si'</em>, la Chiesa custodisce un patrimonio organico di discernimento che non teme le novità del tempo presente.</p>
+                    <p class="mb-4">Leone XIV rileva che la teologia morale e sociale è chiamata oggi ad affrontare l'IA non solo sul piano etico generale, ma elaborando specifici orientamenti normativi per un'autentica <strong>algoretica</strong> che tuteli i deboli e favorisca la redistribuzione delle risorse cognitive.</p>
+                `
+            },
+            3: {
+                category: "Radici",
+                title: "La Dignità Irriducibile",
+                sub: "Capitolo 2 (nn. 51–95) · I Principi Fondamentali della Persona",
+                content: `
+                    <p class="mb-4">L'essere umano, secondo l'antropologia cristiana formulata nel Capitolo 2, riflette la complessità trinitaria. Non è un monolite solitario né una mera stringa di dati quantificabili. L'identità umana è intrinsecamente relazionale e sacra.</p>
+                    <p class="mb-4">Ogni tentativo di ridurre la persona a mero consumatore o a input per motori statistici predittivi urta frontalmente contro il principio supremo della dignità ontologica. Da qui derivano i criteri operativi per le istituzioni:</p>
+                    <ul class="list-disc pl-5 mb-4 space-y-2">
+                        <li><strong>Bene Comune:</strong> La tecnologia digitale deve servire il benessere totale della persona e della collettività, non l'arricchimento predatorio di oligopoli.</li>
+                        <li><strong>Destinazione Universale:</strong> L'accesso alla conoscenza computazionale e all'energia non può essere concentrato nelle mani di pochi popoli o società private.</li>
+                        <li><strong>Sussidiarietà:</strong> Le decisioni ultime su vita, salute e giustizia devono rimanere saldamente in mano ad agenti umani, senza deleghe fiduciarie a reti neurali esterne.</li>
+                    </ul>
+                `
+            },
+            4: {
+                category: "Sfide",
+                title: "Il Paradigma Tecnocratico",
+                sub: "Capitolo 3 (nn. 96–140) · I Rischi della Delega Totale",
+                content: `
+                    <p class="mb-4">In questa sezione centrale, Leone XIV muove una profonda critica culturale al "paradigma tecnocratico", mutuando e specificando l'intuizione di Papa Francesco. L'errore fatale del nostro secolo non risiede nelle macchine, ma nell'ideologia che postula l'infallibilità dell'efficienza.</p>
+                    <p class="mb-4">Quando la misurazione delle performance, l'algoritmo predittivo e il calcolo utilitaristico diventano i soli canoni per valutare l'occupazione, il merito scolastico, la concessione di un credito finanziario o il destino geopolitico, l'umanità abdica al suo dono più prezioso: la libertà morale.</p>
+                    <p class="mb-4">L'enciclica lancia un appello solenne ai governi per una regolamentazione stringente dei sistemi di intelligenza artificiale, esigendo trasparenza sui dataset di addestramento e un veto definitivo sullo sviluppo di armi totalmente autonome (LAWS), che priverebbero la guerra anche dell'ultimo frammento di responsabilità umana.</p>
+                `
+            },
+            5: {
+                category: "Sfide",
+                title: "La Confutazione del Postumanesimo",
+                sub: "Capitolo 3, Sezione II (nn. 120–140) · La Custodia del Limite",
+                content: `
+                    <p class="mb-4">Il Papa affronta direttamente i movimenti intellettuali del transumanesimo e del postumanesimo, che prospettano il superamento del limite biologico mediante l'ibridazione e l'upload cerebrale come forma ultima di salvezza mondana.</p>
+                    <p class="mb-4">La teologia risponde con audacia: il limite umano non è una barriera accidentale da distruggere, ma la condizione intrinseca di possibilità per la nascita dell'empatia, dell'amore, del dono e della cura del debole.</p>
+                    <p class="mb-4">Senza la vulnerabilità biologica della nascita, della vecchiaia e della morte, svanisce il presupposto etico della fraternità. La forza dello spirito non si mostra nella perfezione algoritmica o nel silicio potenziato, ma nella capacità di amare fino al sacrificio: la <em>magnifica humanitas</em> che si è fatta carne in Cristo.</p>
+                `
+            },
+            6: {
+                category: "Costruzione",
+                title: "Verità, Lavoro, Libertà nell'Era Digitale",
+                sub: "Capitolo 4 (nn. 141–210) · Pilastri dell'Edificazione Sociale",
+                content: `
+                    <p class="mb-4">Il magistero declina qui tre sfide pratiche urgenti, ponendo le basi per la ricostruzione sociale nel tempo post-industriale:</p>
+                    <p class="mb-4"><strong>La Verità:</strong> Nell'era dei deepfake e delle allucinazioni sintetiche, la disinformazione organizzata minaccia la democrazia. Il Papa propone un'ecologia dell'informazione e un'alleanza educativa volta a riscoprire il pensiero speculativo e la verifica critica dei fatti.</p>
+                    <p class="mb-4"><strong>Il Lavoro:</strong> Il progresso non può tradursi nella sostituzione selvaggia della forza lavoro con macchine intelligenti a solo beneficio del profitto azionario. Il lavoro è dignità, è cooperazione alla creazione. L'economia deve proteggere l'occupazione, valorizzando la sensibilità e la flessibilità umana.</p>
+                    <p class="mb-4"><strong>La Libertà:</strong> L'esposizione prolungata e i meccanismi di gratificazione dopaminergica dei social network stanno generando nuove dipendenze interiori e forme subdole di sorveglianza. Spezzare le nuove catene digitali è un dovere etico irrinunciabile.</p>
+                `
+            },
+            7: {
+                category: "Costruzione",
+                title: "La Civiltà dell'Amore Contro la Potenza",
+                sub: "Capitolo 5 (nn. 211–270) · Ecumenismo, Pace e Disarmo",
+                content: `
+                    <p class="mb-4">Papa Leone XIV lancia una denuncia accorata contro la recrudescenza del militarismo internazionale e l'erosione del diritto internazionale. Egli contrappone la "cultura della potenza" alla "civiltà dell'amore".</p>
+                    <p class="mb-4">Mentre la prima normalizza il conflitto, scommette sull'egemonia nucleare e utilizza sistemi di IA avanzata per massimizzare la precisione e la letalità dei droni, la seconda richiede un disarmo delle menti e delle parole, e un ripristino energico del multilateralismo.</p>
+                    <p class="mb-4">La pace non si ottiene bilanciando i terrori reciproci, ma abbracciando lo sguardo dei vinti, degli orfani e delle vittime innocenti di ogni parte. La diplomazia etica, lungi dall'essere mera utopia, è il realismo spirituale indispensabile per scongiurare l'autodistruzione globale.</p>
+                `
+            },
+            8: {
+                category: "Costruzione",
+                title: "Costruttori di Comunione",
+                sub: "Conclusione (nn. 271–285) · Il Mandato alla Speranza",
+                content: `
+                    <p class="mb-4">L'enciclica si conclude con una solenne nota di speranza radicata nel mistero dell'Incarnazione. Maria, che nel Magnificat profetizza l'innalzamento degli umili e la caduta dei potenti, è additata come stella polare per il nostro tempo.</p>
+                    <p class="mb-4">Leone XIV esorta a non guardare al futuro tecnologico con angoscia o paralisi pessimista: le sfide sono grandi, ma la promessa dello Spirito lo è ancora di più. Non siamo spettatori inermi dell'avanzata delle macchine, ma protagonisti dell'alleanza tra libertà e verità.</p>
+                    <p class="mb-4">Come gli operai di Neemia, credenti e uomini di buona volontà sono esortati ad impugnare gli strumenti del proprio tempo, sporcandosi le mani nel cantiere del bene comune. L'autentica dignità dell'umanità non soccomberà davanti a nessuna invenzione, poiché è protetta dall'amore infinito del Creatore.</p>
+                `
+            }
+        };
+
+        function openReadingMode(sectionId) {
+            const data = readingDatabase[sectionId];
+            if (!data) return;
+
+            document.getElementById('modal-category').innerText = data.category;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-sub').innerText = data.sub;
+            document.getElementById('modal-content').innerHTML = data.content;
+            document.getElementById('modal-external-link').href = VATICAN_URL;
+
+            const modal = document.getElementById('reading-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            document.body.classList.add('overflow-hidden'); // Block body scrolling
+        }
+
+        function closeReadingMode() {
+            const modal = document.getElementById('reading-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100');
+            document.body.classList.remove('overflow-hidden'); // Restore body scrolling
+        }
+
+        // Close modal when clicking outside contents
+        document.getElementById('reading-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('reading-modal')) {
+                closeReadingMode();
+            }
+        });
+    </script>
+</body>
+</html>
