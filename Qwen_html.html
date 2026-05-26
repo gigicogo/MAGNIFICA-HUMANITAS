@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnifica Humanitas - Enciclica di Papa Leone XIV</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #C9A84C;
+            --ivory: #F5F0E8;
+            --navy: #1A2744;
+            --cardinal: #8B1A1A;
+            --text-dark: #2C3E50;
+            --text-light: #5A6B7C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: var(--ivory);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        /* Fixed Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 39, 68, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--ivory);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .logo-text span {
+            font-size: 0.85rem;
+            color: var(--ivory);
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--ivory);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .vatican-link-header {
+            color: var(--gold);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gold);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .vatican-link-header:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 39, 68, 0.8), rgba(201, 168, 76, 0.3)),
+                        url('https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            color: var(--ivory);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .hero-quote {
+            font-size: 1.2rem;
+            color: var(--ivory);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold);
+            margin: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.4);
+        }
+
+        .btn-official {
+            background: transparent;
+            color: var(--ivory);
+            border: 2px solid var(--ivory);
+        }
+
+        .btn-official:hover {
+            background: var(--ivory);
+            color: var(--navy);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--ivory);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-container.reverse {
+            direction: rtl;
+        }
+
+        .section-container.reverse > * {
+            direction: ltr;
+        }
+
+        .section-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section-image.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .section-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .section-content {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .section-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-number {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .section-content h3 {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-content .chapter-ref {
+            color: var(--cardinal);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-box {
+            background: var(--navy);
+            color: var(--ivory);
+            padding: 2rem;
+            border-left: 4px solid var(--gold);
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--gold);
+            display: block;
+            line-height: 1;
+            margin-bottom: -0.5rem;
+        }
+
+        .thread-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(201, 168, 76, 0.1);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .thread-link::before {
+            content: '→';
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .vatican-link-small {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .vatican-link-small:hover {
+            color: var(--cardinal);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--ivory);
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-official {
+            background: rgba(201, 168, 76, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-official h4 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-official p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-footer {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-footer:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(201, 168, 76, 0.4);
+        }
+
+        .footer-magnificat {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin: 2rem 0;
+            line-height: 1.8;
+        }
+
+        .footer-copy {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .section-container,
+            .section-container.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+                gap: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .section-image img {
+                height: 300px;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* Progress indicator */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gold);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <span class="logo-icon">🏛️</span>
+                <div class="logo-text">
+                    <h1>Magnifica Humanitas</h1>
+                    <span>Papa Leone XIV · 15 maggio 2026</span>
+                </div>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#section1">Babele/Gerusalemme</a></li>
+                    <li><a href="#section2">Dottrina Sociale</a></li>
+                    <li><a href="#section3">Dignità</a></li>
+                    <li><a href="#section4">IA</a></li>
+                    <li><a href="#section5">Postumanesimo</a></li>
+                    <li><a href="#section6">Pilastri</a></li>
+                    <li><a href="#section7">Pace</a></li>
+                    <li><a href="#section8">Conclusione</a></li>
+                </ul>
+            </nav>
+
+            <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="vatican-link-header">
+                🏛️ Vatican.va
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">Enciclica Sociale 2026</div>
+            <h2>La Magnifica Umanità</h2>
+            <p class="hero-subtitle">Un'enciclica per il nostro tempo</p>
+            <p class="hero-quote">
+                "La magnifica umanità creata da Dio si trova oggi di fronte ad una scelta decisiva: 
+                innalzare una nuova torre di Babele o edificare la città dove Dio e l'umanità abitano insieme."
+            </p>
+            <div>
+                <a href="#section1" class="btn-primary">Inizia il percorso →</a>
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn-primary btn-official">
+                    🏛️ Leggi il documento ufficiale — Vatican.va
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- Section 1 -->
+    <section id="section1">
+        <div class="section-container">
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1569937756447-e24cac6611f3?w=800" alt="Torre di Babele">
+            </div>
+            <div class="section-content">
+                <span class="section-number">1</span>
+                <h3>Babele o Gerusalemme? La scelta del nostro tempo</h3>
+                <span class="chapter-ref">Capitolo: Introduzione (nn. 7–10)</span>
+                
+                <p>
+                    Il Papa propone due immagini bibliche come specchio del presente. La <strong>Torre di Babele</strong> 
+                    (Gen 11) rappresenta la tecnologia senza Dio: potente, omologante, destinata al crollo perché 
+                    costruita sull'orgoglio e sull'autosufficienza.
+                </p>
+                
+                <p>
+                    La <strong>ricostruzione di Gerusalemme</strong> di Neemia (Ne 2–6) rappresenta l'alternativa: 
+                    un popolo che lavora insieme, ognuno con il proprio tratto di muro, guidato dalla preghiera 
+                    e dalla responsabilità condivisa.
+                </p>
+
+                <div class="quote-box">
+                    La prima scelta non è tra "sì" e "no" alla tecnologia, ma tra queste due visioni del mondo.
+                </div>
+
+                <div class="thread-link">
+                    Per capire cosa scegliere, dobbiamo sapere da dove veniamo: la lunga tradizione di pensiero sociale della Chiesa.
+                </div>
+
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="vatican-link-small">
+                    ← Testo originale Vatican.va
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="section2">
+        <div class="section-container reverse">
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800" alt="Biblioteca antica">
+            </div>
+            <div class="section-content">
+                <span class="section-number">2</span>
+                <h3>135 anni di pensiero vivo: dalla Rerum Novarum a oggi</h3>
+                <span class="chapter-ref">Capitolo 1 (nn. 17–50)</span>
+                
+                <p>
+                    Nel 1891 Leone XIII inaugurava la Dottrina sociale della Chiesa con la <em>Rerum Novarum</em>, 
+                    rispondendo alla questione operaia dell'industrializzazione. Da allora, ogni Papa ha aggiunto la sua voce.
+                </p>
+
+                <p>
+                    Non è un sistema chiuso: è un <em>corpus</em> vivo che si sviluppa fedele al Vangelo e in dialogo 
+                    con le scienze. Una tradizione che continua oggi con questa enciclica sulla dignità umana nell'era digitale.
+                </p>
+
+                <div class="quote-box">
+                    La Dottrina sociale della Chiesa è un tesoro che si arricchisce di generazione in generazione, 
+                    rimanendo fedele alle radici e aperta alle sfide del presente.
+                </div>
+
+                <div class="thread-link">
+                    Su quali fondamenta si regge questo pensiero? Ecco i principi irrinunciabili.
+                </div>
+
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="vatican-link-small">
+                    ← Testo originale Vatican.va
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="section3">
+        <div class="section-container">
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1545063328-c8e3fc0ccc38?w=800" alt="Creazione di Adamo">
+            </div>
+            <div class="section-content">
+                <span class="section-number">3</span>
+                <h3>L'essere umano: immagine di Dio, mai strumento</h3>
+                <span class="chapter-ref">Capitolo 2 (nn. 51–95)</span>
+                
+                <p>
+                    Il cuore della Dottrina sociale è l'<strong>essere umano come immagine del Dio trinitario</strong>: 
+                    unico, irripetibile, portatore di una dignità che nessun potere può cancellare.
+                </p>
+
+                <p>
+                    Da questo fondamento discendono cinque principi: <strong>bene comune</strong>, 
+                    <strong>destinazione universale dei beni</strong>, <strong>sussidiarietà</strong>, 
+                    <strong>solidarietà</strong>, <strong>giustizia sociale</strong>. Questi principi non sono astratti: 
+                    sono criteri concreti per giudicare le scelte politiche, economiche e tecnologiche.
+                </p>
+
+                <div class="quote-box">
+                    L'essere umano non è mai un mezzo, ma sempre un fine. Questa verità è la bussola 
+                    per navigare le acque tempestose del nostro tempo.
+                </div>
+
+                <div class="thread-link">
+                    Ma oggi questa dignità è minacciata da una forza nuova e pervasiva: il paradigma tecnocratico e l'intelligenza artificiale.
+                </div>
+
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="vatican-link-small">
+                    ← Testo originale Vatican.va
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="section4">
+        <div class="section-container reverse">
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800" alt="Intelligenza Artificiale">
+            </div>
+            <div class="section-content">
+                <span class="section-number">4</span>
+                <h3>Il potere digitale: promesse, rischi e responsabilità</h3>
+                <span class="chapter-ref">Capitolo 3 (nn. 96–140)</span>
+                
+                <p>
+                    L'IA non è né un male né una soluzione magica: è uno strumento che <strong>assume il volto 
+                    di chi la pensa, la finanzia e la governa</strong>. Il Papa riconosce il suo enorme potenziale 
+                    (curare, connettere, educare) ma denuncia il rischio del "paradigma tecnocratico".
+                </p>
+
+                <p>
+                    La tendenza a ridurre ogni realtà a dati e prestazioni, a misurare il valore umano in termini 
+                    di efficienza, a lasciare che pochi attori privati — più potenti di molti governi — decidano 
+                    il futuro di tutti.
+                </p>
+
+                <div class="quote-box">
+                    La tecnologia può curare, connettere, educare, custodire la Casa comune; ma può anche 
+                    dividere, scartare, generare nuove ingiustizie.
+                </div>
+
+                <div class="thread-link">
+                    Ma c'è di più: alcune correnti di pensiero vogliono andare oltre l'umano. Il Papa risponde con una visione alternativa di grandezza.
+                </div>
+
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="vatican-link-small">
+                    ← Testo originale Vatican.va
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section id="section5">
+        <div class="section-container">
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1507646227500-4d389b0012be?w=800" alt="Trascendenza spirituale">
+            </div>
+            <div class="section-content">
+                <span class="section-number">5</span>
+                <h3>Transumano o pienamente umano? La risposta cristiana</h3>
+                <span class="chapter-ref">Capitolo 3, sezione "Ciò che non possiamo perdere" (nn. 120–140)</span>
+                
+                <p>
+                    Transumanesimo e postumanesimo promettono di "migliorare" l'essere umano fino a superarne 
+                    i limiti biologici, cognitivi, persino morali. Il Papa risponde con fermezza: 
+                    <strong>il limite non è un errore da correggere, ma parte della grandezza umana</strong>.
+                </p>
+
+                <p>
+                    È nella <strong>fragilità</strong> che si manifesta la forza (2 Cor 12,9), è nell'<strong>amore</strong> 
+                    — non nel potenziamento — che l'essere umano trova la sua pienezza. Il "più che umano" cristiano 
+                    non è l'uomo potenziato dalle macchine, ma l'essere umano abitato dalla grazia.
+                </p>
+
+                <div class="quote-box">
+                    Ciò che non possiamo perdere: il limite, il cuore, la grandezza dell'essere umano.
+                </div>
+
+                <div class="thread-link">
+                    Come proteggere concretamente l'umano? Il Papa indica tre pilastri: la verità, il lavoro, la libertà.
+                </div>
+
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="vatican-link-small">
+                    ← Testo originale Vatican.va
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6 -->
+    <section id="section6">
+        <div class="section-container reverse">
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800" alt="Giustizia e lavoro">
+            </div>
+            <div class="section-content">
+                <span class="section-number">6</span>
+                <h3>Tre pilastri per un'era digitale a misura d'uomo</h3>
+                <span class="chapter-ref">Capitolo 4 (nn. 141–210)</span>
+                
+                <p>
+                    Il Papa declina la custodia dell'umano in tre ambiti concreti. <strong>Verità</strong>: 
+                    nell'epoca della disinformazione e dell'immaginario manipolato dall'IA, serve un'ecologia 
+                    della comunicazione e un'alleanza educativa.
+                </p>
+
+                <p>
+                    <strong>Lavoro</strong>: la transizione digitale non può lasciare indietro nessuno; 
+                    il lavoro è dignità, non solo reddito. <strong>Libertà</strong>: nuove dipendenze digitali 
+                    e forme di controllo sociale minacciano l'autonomia; spezzare le catene delle "nuove schiavitù" 
+                    è un imperativo morale e politico.
+                </p>
+
+                <div class="quote-box">
+                    Il vero progresso nasce sempre da un cuore aperto all'altro, 
+                    da un'intelligenza disponibile all'ascolto.
+                </div>
+
+                <div class="thread-link">
+                    Ma tutto questo richiede anche di scegliere tra due culture globali radicalmente opposte.
+                </div>
+
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="vatican-link-small">
+                    ← Testo originale Vatican.va
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7 -->
+    <section id="section7">
+        <div class="section-container">
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800" alt="Pace mondiale">
+            </div>
+            <div class="section-content">
+                <span class="section-number">7</span>
+                <h3>La civiltà dell'amore contro la cultura della potenza</h3>
+                <span class="chapter-ref">Capitolo 5 (nn. 211–270)</span>
+                
+                <p>
+                    Il Papa identifica una "cultura della potenza" che permea il mondo contemporaneo: 
+                    normalizzazione della guerra, uso dell'IA nelle armi autonome, crisi del multilateralismo, 
+                    arroganza dei potenti.
+                </p>
+
+                <p>
+                    A questa contrappone la <strong>civiltà dell'amore</strong> — visione di Paolo VI, ripresa e attualizzata — 
+                    che si costruisce disarmando le parole, assumendo lo sguardo delle vittime, coltivando la diplomazia, 
+                    rilanciando il dialogo tra nazioni. La pace non è utopia: è un progetto che richiede coraggio politico, 
+                    realismo spirituale e la volontà di tutti.
+                </p>
+
+                <div class="quote-box">
+                    Non temiamo di sporcarci le mani nel cantiere del nostro tempo.
+                </div>
+
+                <div class="thread-link">
+                    Come concludere? Con una chiamata a tutti: il cantiere del nostro tempo è aperto.
+                </div>
+
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="vatican-link-small">
+                    ← Testo originale Vatican.va
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8 -->
+    <section id="section8">
+        <div class="section-container reverse">
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="Alba speranza">
+            </div>
+            <div class="section-content">
+                <span class="section-number">8</span>
+                <h3>Costruttori di comunione, non architetti di Babele</h3>
+                <span class="chapter-ref">Conclusione (nn. 271–285)</span>
+                
+                <p>
+                    Il Papa chiude con il <strong>Magnificat</strong>: il canto di Maria, donna che ha accolto 
+                    il Verbo fatto carne, diventa il modello per ogni essere umano chiamato a fare spazio a Dio nella storia.
+                </p>
+
+                <p>
+                    La conclusione è un appello appassionato: non temiamo di sporcarci le mani nel cantiere del nostro tempo. 
+                    Come Neemia, preghiamo, progettiamo con sapienza, lavoriamo con perseveranza. Le pietre scartate — 
+                    i poveri, i malati, i migranti — diventeranno testata d'angolo. La <em>magnifica humanitas</em> 
+                    non è un sogno: è il compito che ci attende.
+                </p>
+
+                <div class="quote-box">
+                    Costruttori di comunione, non architetti di Babele. È questa la chiamata del nostro tempo.
+                </div>
+
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="vatican-link-small">
+                    ← Testo originale Vatican.va
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-official">
+                <h4>🏛️ DOCUMENTO UFFICIALE</h4>
+                <p>
+                    <strong>Lettera Enciclica Magnifica Humanitas</strong><br>
+                    Papa Leone XIV · 15 maggio 2026<br>
+                    <em>Sulla custodia della persona umana nel tempo dell'intelligenza artificiale</em>
+                </p>
+                <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn-footer">
+                    Leggi su Vatican.va →
+                </a>
+            </div>
+
+            <div class="footer-magnificat">
+                "Magnificat anima mea Dominum"<br>
+                <small>L'anima mia magnifica il Signore</small>
+            </div>
+
+            <div class="footer-copy">
+                <p>Fonte ufficiale: vatican.va · © Libreria Editrice Vaticana</p>
+                <p style="margin-top: 1rem; font-size: 0.8rem;">
+                    Sito web realizzato per la diffusione e lo studio dell'enciclica<br>
+                    135° anniversario della Rerum Novarum (1891-2026)
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Progress bar
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+
+            // Header scroll effect
+            const header = document.getElementById('header');
+            if (winScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        };
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all section images and content
+        document.querySelectorAll('.section-image, .section-content').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
