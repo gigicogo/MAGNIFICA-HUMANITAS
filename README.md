@@ -9,3 +9,7 @@ Puoi copiare o scaricare il prompt direttamente dal repo: https://github.com/gig
 ChatGPT+Appdeply: https://5823cb30e4d840f3b1.v2.appdeploy.ai/
 
 Claude artifact: https://claude.ai/public/artifacts/cd22ab1e-2831-4864-b5f1-59928909338d
+
+Gemini: https://gemini.google.com/share/83cac369766a
+
+
