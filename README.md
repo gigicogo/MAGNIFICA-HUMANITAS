@@ -7,4 +7,5 @@ Puoi copiare o scaricare il prompt dal repo [https://github.com/gigicogo/MAGNIFI
 
 # Risultati 
 ChatGPT+Appdeply: https://5823cb30e4d840f3b1.v2.appdeploy.ai/
+
 Claude artifact: https://claude.ai/public/artifacts/cd22ab1e-2831-4864-b5f1-59928909338d
