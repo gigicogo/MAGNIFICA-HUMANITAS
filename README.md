@@ -15,3 +15,5 @@ Gemini: https://gemini.google.com/share/83cac369766a
 Google AI Studio (quasi uguale a Gemini, ovviamente): https://magnifica-humanitas-33404691356.europe-west2.run.app
 
 Qween: https://www.gigicogo.it/Qwen_html.html
+
+Lovable: https://humanitas-navigator.lovable.app/
