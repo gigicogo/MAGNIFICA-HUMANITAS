@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magnifica Humanitas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --gold:#C9A84C;--ivory:#F5F0E8;--navy:#1A2744;--cardinal:#8B1A1A;
+    --gold-light:#E8D89A;--navy-light:#2a3d66;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Lato',sans-serif;background:#0e1520;color:#e8e2d8;overflow-x:hidden}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,21,32,0.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,168,76,0.2);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);letter-spacing:0.05em}
+  .nav-encyclical{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(201,168,76,0.7);border:1px solid rgba(201,168,76,0.35);padding:5px 12px;border-radius:2px;text-decoration:none;transition:all 0.2s;white-space:nowrap}
+  .nav-encyclical:hover{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,0.08)}
+  .nav-links{display:flex;gap:0.25rem;align-items:center}
+  .nav-btn{background:none;border:none;color:rgba(232,226,216,0.55);font-family:'Lato',sans-serif;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;padding:6px 10px;border-radius:4px;transition:color 0.2s,background 0.2s;white-space:nowrap}
+  .nav-btn:hover,.nav-btn.active{color:var(--gold);background:rgba(201,168,76,0.1)}
+
+  /* SECTIONS */
+  .section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 3rem 3rem;position:relative;border-bottom:1px solid rgba(201,168,76,0.1)}
+
+  /* HERO */
+  #s0{background:linear-gradient(160deg,#0e1520 0%,#1a2744 50%,#0e1520 100%);align-items:center;text-align:center;padding:80px 2rem 2rem}
+  .hero-eyebrow{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0.8}
+  .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:600;color:var(--ivory);line-height:1.1;margin-bottom:0.5rem}
+  .hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.5vw,1.4rem);font-style:italic;color:var(--gold);margin-bottom:1.5rem;opacity:0.9}
+  .hero-meta{font-size:0.8rem;color:rgba(232,226,216,0.45);letter-spacing:0.1em;margin-bottom:2.5rem}
+  .hero-quote{max-width:620px;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--gold-light);border-left:2px solid var(--gold);padding:0.75rem 1.25rem;text-align:left;margin:0 auto 2.5rem;line-height:1.6}
+  .journey-btn{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--gold);color:var(--gold);font-family:'Lato',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;padding:12px 28px;cursor:pointer;border-radius:2px;transition:all 0.3s}
+  .journey-btn:hover{background:var(--gold);color:#0e1520}
+  .movement-grid{display:flex;gap:1rem;margin-top:3rem;flex-wrap:wrap;justify-content:center}
+  .mvmt{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:0.75rem 1.25rem;flex:1;min-width:160px;max-width:200px;cursor:pointer;transition:background 0.2s,border-color 0.2s}
+  .mvmt:hover{background:rgba(201,168,76,0.12);border-color:rgba(201,168,76,0.4)}
+  .mvmt-num{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);opacity:0.7;margin-bottom:4px}
+  .mvmt-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ivory)}
+
+  /* CONTENT SECTIONS */
+  .section-inner{max-width:960px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  .section-inner.reverse{direction:rtl}
+  .section-inner.reverse > *{direction:ltr}
+  .section-text{}
+  .section-num{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.6;margin-bottom:0.75rem}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:600;color:var(--ivory);line-height:1.2;margin-bottom:0.5rem}
+  .section-ref{font-size:0.7rem;color:rgba(232,226,216,0.35);letter-spacing:0.08em;margin-bottom:1.25rem;text-transform:uppercase}
+  .section-abstract{font-size:0.92rem;line-height:1.75;color:rgba(232,226,216,0.75);margin-bottom:1.5rem}
+  .section-quote{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--gold-light);border-left:2px solid rgba(201,168,76,0.4);padding:0.6rem 1rem;margin-bottom:1.5rem;line-height:1.5}
+  .thread{font-size:0.82rem;color:rgba(232,226,216,0.4);font-style:italic;padding-top:1rem;border-top:1px solid rgba(201,168,76,0.15);line-height:1.5}
+
+  /* IMAGE PANEL */
+  .section-image{background:rgba(26,39,68,0.5);border:1px solid rgba(201,168,76,0.15);border-radius:8px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;text-align:center;position:relative;overflow:hidden}
+  .img-icon{font-size:3.5rem;opacity:0.35}
+  .img-label{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,168,76,0.5)}
+  .section-image::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,0.04) 0%,transparent 70%)}
+
+  /* ICONS per sezione */
+  .icon-0::before{content:'✝'}
+  .icon-1::before{content:'🏛'}
+  .icon-2::before{content:'📜'}
+  .icon-3::before{content:'🕊'}
+  .icon-4::before{content:'⚡'}
+  .icon-5::before{content:'🧬'}
+  .icon-6::before{content:'⚖'}
+  .icon-7::before{content:'🌿'}
+  .icon-8::before{content:'🌅'}
+
+  /* PROGRESS */
+  .progress-bar{position:fixed;top:56px;left:0;right:0;height:2px;background:rgba(201,168,76,0.1);z-index:99}
+  .progress-fill{height:100%;background:var(--gold);width:0%;transition:width 0.1s}
+
+  /* NAV DOTS */
+  .nav-dots{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:90}
+  .dot{width:6px;height:6px;border-radius:50%;background:rgba(201,168,76,0.25);border:none;cursor:pointer;transition:all 0.3s;padding:0}
+  .dot.active{background:var(--gold);transform:scale(1.5)}
+
+  /* FOOTER */
+  footer{background:#090d15;padding:3rem;text-align:center;border-top:1px solid rgba(201,168,76,0.15)}
+  .footer-quote{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--gold);max-width:500px;margin:0 auto 1rem;line-height:1.5}
+  .footer-source{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(232,226,216,0.3)}
+  .footer-source a{color:rgba(201,168,76,0.6);text-decoration:none}
+  .footer-source a:hover{color:var(--gold)}
+
+  @media(max-width:680px){
+    .section-inner,.section-inner.reverse{grid-template-columns:1fr;direction:ltr}
+    .nav-links{display:none}
+    .nav-dots{display:none}
+    nav{padding:0 1rem}
+    .section{padding:80px 1.25rem 2rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Magnifica Humanitas</div>
+  <div class="nav-links" id="navLinks"></div>
+  <a class="nav-encyclical" href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" target="_blank">Leggi l'enciclica &rarr;</a>
+</nav>
+<div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
+<div class="nav-dots" id="navDots"></div>
+
+<div id="sections-container"></div>
+
+<footer>
+  <div class="footer-quote">«Magnificat anima mea Dominum»</div>
+  <div class="footer-source">
+    Fonte ufficiale: <a href="https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html" target="_blank">Vatican.va</a>
+    &nbsp;·&nbsp; Papa Leone XIV · 15 maggio 2026
+  </div>
+</footer>
+
+<script>
+const sections = [
+  {
+    id:'s0', num:'', nav:'Home', hero:true,
+    title:'La Magnifica Umanità',
+    subtitle:'Un\'enciclica per il nostro tempo',
+    meta:'Papa Leone XIV · 15 maggio 2026 · 135° anniversario della Rerum Novarum',
+    quote:'«La magnifica umanità creata da Dio si trova oggi di fronte ad una scelta decisiva: innalzare una nuova torre di Babele o edificare la città dove Dio e l\'umanità abitano insieme.»',
+    quoteRef:'— Introduzione, n. 1'
+  },
+  {
+    id:'s1', num:'01', nav:'Sezione I', icon:'icon-1',
+    title:'Babele o Gerusalemme?',
+    subtitle:'La scelta del nostro tempo',
+    ref:'Introduzione · nn. 7–10',
+    abstract:'Il Papa propone due immagini bibliche come specchio del presente. La Torre di Babele rappresenta la tecnologia senza Dio: potente, omologante, destinata al crollo perché costruita sull\'orgoglio e sull\'autosufficienza. La ricostruzione di Gerusalemme di Neemia rappresenta l\'alternativa: un popolo che lavora insieme, ognuno con il proprio tratto di muro, guidato dalla preghiera e dalla responsabilità condivisa. La prima scelta non è tra "sì" e "no" alla tecnologia, ma tra queste due visioni del mondo.',
+    quote:'«Non temiamo di sporcarci le mani nel cantiere del nostro tempo.»',
+    quoteRef:'— Introduzione, n. 16',
+    thread:'Per capire cosa scegliere, dobbiamo sapere da dove veniamo: la lunga tradizione di pensiero sociale della Chiesa.',
+    reverse:false
+  },
+  {
+    id:'s2', num:'02', nav:'Sezione II', icon:'icon-2',
+    title:'135 anni di pensiero vivo',
+    subtitle:'Dalla Rerum Novarum a oggi',
+    ref:'Capitolo 1 · nn. 17–50',
+    abstract:'Nel 1891 Leone XIII inaugurava la Dottrina sociale della Chiesa con la Rerum Novarum, rispondendo alla questione operaia dell\'industrializzazione. Da allora, ogni Papa ha aggiunto la sua voce: dalla sussidiarietà ai diritti umani, dal Concilio Vaticano II all\'ecologia integrale. Non è un sistema chiuso: è un corpus vivo che si sviluppa fedele al Vangelo e in dialogo con le scienze.',
+    quote:'«Il vero progresso nasce sempre da un cuore aperto all\'altro, da un\'intelligenza disponibile all\'ascolto.»',
+    quoteRef:'— Introduzione, n. 15',
+    thread:'Su quali fondamenta si regge questo pensiero? Ecco i principi irrinunciabili.',
+    reverse:true
+  },
+  {
+    id:'s3', num:'03', nav:'Sezione III', icon:'icon-3',
+    title:'L\'essere umano: immagine di Dio',
+    subtitle:'Mai strumento, sempre fine',
+    ref:'Capitolo 2 · nn. 51–95',
+    abstract:'Il cuore della Dottrina sociale è l\'essere umano come immagine del Dio trinitario: unico, irripetibile, portatore di una dignità che nessun potere può cancellare. Da questo fondamento discendono cinque principi: bene comune, destinazione universale dei beni, sussidiarietà, solidarietà, giustizia sociale. Questi principi non sono astratti: sono criteri concreti per giudicare le scelte politiche, economiche e tecnologiche.',
+    quote:'«La dignità umana non è una conquista: è un dono che dobbiamo custodire insieme.»',
+    quoteRef:'— Capitolo 2',
+    thread:'Ma oggi questa dignità è minacciata da una forza nuova e pervasiva: il paradigma tecnocratico e l\'intelligenza artificiale.',
+    reverse:false
+  },
+  {
+    id:'s4', num:'04', nav:'Sezione IV', icon:'icon-4',
+    title:'Il potere digitale',
+    subtitle:'Promesse, rischi, responsabilità',
+    ref:'Capitolo 3 · nn. 96–140',
+    abstract:'L\'IA non è né un male né una soluzione magica: è uno strumento che assume il volto di chi la pensa, la finanzia e la governa. Il Papa riconosce il suo enorme potenziale — curare, connettere, educare — ma denuncia il rischio del "paradigma tecnocratico": misurare il valore umano in termini di efficienza, e lasciare che pochi attori privati decidano il futuro di tutti. L\'enciclica chiede trasparenza, responsabilità e una governance globale orientata al bene comune.',
+    quote:'«La tecnologia può curare, connettere, educare, custodire la Casa comune; ma può anche dividere, scartare, generare nuove ingiustizie.»',
+    quoteRef:'— Introduzione, n. 9',
+    thread:'Ma c\'è di più: alcune correnti di pensiero vogliono andare oltre l\'umano. Il Papa risponde con una visione alternativa di grandezza.',
+    reverse:true
+  },
+  {
+    id:'s5', num:'05', nav:'Sezione V', icon:'icon-5',
+    title:'Il limite è grandezza',
+    subtitle:'Contro il postumanesimo',
+    ref:'Capitolo 3 · nn. 120–140',
+    abstract:'Transumanesimo e postumanesimo promettono di "migliorare" l\'essere umano fino a superarne i limiti biologici, cognitivi, persino morali. Il Papa risponde con fermezza: il limite non è un errore da correggere, ma parte della grandezza umana. È nella fragilità che si manifesta la forza. Il "più che umano" cristiano non è l\'uomo potenziato dalle macchine, ma l\'essere umano abitato dalla grazia: la magnifica humanitas rivelata in Cristo.',
+    quote:'«Ciò che non possiamo perdere: il limite, il cuore, la grandezza dell\'essere umano.»',
+    quoteRef:'— Capitolo 3, titolo di sezione',
+    thread:'Come proteggere concretamente l\'umano? Il Papa indica tre pilastri: la verità, il lavoro, la libertà.',
+    reverse:false
+  },
+  {
+    id:'s6', num:'06', nav:'Sezione VI', icon:'icon-6',
+    title:'Tre pilastri per l\'era digitale',
+    subtitle:'Verità, lavoro, libertà',
+    ref:'Capitolo 4 · nn. 141–210',
+    abstract:'Il Papa declina la custodia dell\'umano in tre ambiti concreti. Verità: nell\'epoca della disinformazione serve un\'ecologia della comunicazione che formi pensatori critici. Lavoro: la transizione digitale non può lasciare indietro nessuno; il lavoro è dignità, non solo reddito. Libertà: nuove dipendenze digitali e forme di controllo sociale minacciano l\'autonomia; spezzare le "nuove schiavitù" è un imperativo morale e politico.',
+    quote:'«Un\'economia giusta valorizza ogni persona, non solo chi sa stare al passo con la macchina.»',
+    quoteRef:'— Capitolo 4',
+    thread:'Ma tutto questo richiede anche di scegliere tra due culture globali radicalmente opposte.',
+    reverse:true
+  },
+  {
+    id:'s7', num:'07', nav:'Sezione VII', icon:'icon-7',
+    title:'La civiltà dell\'amore',
+    subtitle:'Contro la cultura della potenza',
+    ref:'Capitolo 5 · nn. 211–270',
+    abstract:'Il Papa identifica una "cultura della potenza" che permea il mondo contemporaneo: normalizzazione della guerra, uso dell\'IA nelle armi autonome, crisi del multilateralismo, arroganza dei potenti. A questa contrappone la civiltà dell\'amore — visione di Paolo VI, ripresa e attualizzata — che si costruisce disarmando le parole, assumendo lo sguardo delle vittime, coltivando la diplomazia. La pace non è utopia: è un progetto che richiede coraggio politico e realismo spirituale.',
+    quote:'«La pace non è assenza di guerra: è la presenza attiva della giustizia e della cura reciproca.»',
+    quoteRef:'— Capitolo 5',
+    thread:'Come concludere? Con una chiamata a tutti: il cantiere del nostro tempo è aperto.',
+    reverse:false
+  },
+  {
+    id:'s8', num:'08', nav:'Sezione VIII', icon:'icon-8',
+    title:'Il canto della speranza',
+    subtitle:'Costruttori di comunione',
+    ref:'Conclusione · nn. 271–285',
+    abstract:'Il Papa chiude con il Magnificat: il canto di Maria, donna che ha accolto il Verbo fatto carne, diventa il modello per ogni essere umano chiamato a fare spazio a Dio nella storia. La conclusione è un appello appassionato: come Neemia, preghiamo, progettiamo con sapienza, lavoriamo con perseveranza. Le pietre scartate — i poveri, i malati, i migranti — diventeranno testata d\'angolo. La magnifica humanitas non è un sogno: è il compito che ci attende.',
+    quote:'«Magnificat anima mea Dominum — grida la Chiesa nell\'era dell\'algoritmo, come in ogni era della storia.»',
+    quoteRef:'— Conclusione, n. 285',
+    thread:null,
+    reverse:false
+  }
+];
+
+const iconMap = {
+  's1':'🏛','s2':'📜','s3':'✦','s4':'⚡','s5':'🧬','s6':'⚖','s7':'🕊','s8':'🌅'
+};
+
+function buildHero(s){
+  return `<section id="${s.id}" class="section" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(160deg,#0e1520 0%,#1a2744 50%,#0e1520 100%);padding:80px 2rem 3rem">
+    <div class="hero-eyebrow">Papa Leone XIV · 15 maggio 2026</div>
+    <div class="hero-title">${s.title}</div>
+    <div class="hero-subtitle">${s.subtitle}</div>
+    <div class="hero-meta">${s.meta}</div>
+    <div class="hero-quote">${s.quote}<br><span style="font-size:0.8rem;opacity:0.6;font-style:normal;letter-spacing:0.05em">${s.quoteRef}</span></div>
+    <button class="journey-btn" onclick="scrollToSection('s1')">Inizia il percorso &rarr;</button>
+    <div class="movement-grid">
+      <div class="mvmt" onclick="scrollToSection('s1')" style="cursor:pointer" title="Vai alle sezioni I–III"><div class="mvmt-num">Movimento I</div><div class="mvmt-title">Radici</div><div style="font-size:0.65rem;color:rgba(201,168,76,0.45);margin-top:6px">Sezioni I – III &darr;</div></div>
+      <div class="mvmt" onclick="scrollToSection('s4')" style="cursor:pointer" title="Vai alle sezioni IV–V"><div class="mvmt-num">Movimento II</div><div class="mvmt-title">Sfide</div><div style="font-size:0.65rem;color:rgba(201,168,76,0.45);margin-top:6px">Sezioni IV – V &darr;</div></div>
+      <div class="mvmt" onclick="scrollToSection('s6')" style="cursor:pointer" title="Vai alle sezioni VI–VIII"><div class="mvmt-num">Movimento III</div><div class="mvmt-title">Costruzione</div><div style="font-size:0.65rem;color:rgba(201,168,76,0.45);margin-top:6px">Sezioni VI – VIII &darr;</div></div>
+    </div>
+  </section>`;
+}
+
+function buildSection(s){
+  const gridDir = s.reverse ? 'reverse' : '';
+  const imgOrder = s.reverse ? 'order:-1' : '';
+  return `<section id="${s.id}" class="section">
+    <div class="section-inner ${gridDir}">
+      <div class="section-text">
+        <div class="section-num">${s.num}</div>
+        <div class="section-title">${s.title}</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:rgba(201,168,76,0.65);margin-bottom:0.75rem">${s.subtitle}</div>
+        <div class="section-ref">${s.ref}</div>
+        <div class="section-abstract">${s.abstract}</div>
+        <div class="section-quote">${s.quote}<br><span style="font-size:0.75rem;opacity:0.6;font-style:normal;letter-spacing:0.06em">${s.quoteRef}</span></div>
+        ${s.thread ? `<div class="thread">&#8594; ${s.thread}</div>` : ''}
+      </div>
+      <div class="section-image" style="${imgOrder}">
+        <div style="font-size:4rem;opacity:0.3">${iconMap[s.id]||'✦'}</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(201,168,76,0.4);text-align:center;line-height:1.4">${s.title}</div>
+      </div>
+    </div>
+  </section>`;
+}
+
+// Build sections
+const container = document.getElementById('sections-container');
+container.innerHTML = sections.map(s => s.hero ? buildHero(s) : buildSection(s)).join('');
+
+// Build nav
+const navLinks = document.getElementById('navLinks');
+navLinks.innerHTML = sections.map(s => `<button class="nav-btn" onclick="scrollToSection('${s.id}')" data-id="${s.id}">${s.nav}</button>`).join('');
+
+// Build dots
+const navDots = document.getElementById('navDots');
+navDots.innerHTML = sections.map(s => `<button class="dot" onclick="scrollToSection('${s.id}')" title="${s.nav}" data-dot="${s.id}"></button>`).join('');
+
+function scrollToSection(id){
+  document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+}
+
+// Scroll tracking
+const secEls = sections.map(s => document.getElementById(s.id));
+const prog = document.getElementById('prog');
+let ticking = false;
+
+window.addEventListener('scroll', () => {
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(()=>{
+    const scrollTop = window.scrollY;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (scrollTop/docH*100) + '%';
+
+    let active = 's0';
+    secEls.forEach(el => {
+      if(el && el.getBoundingClientRect().top <= 80) active = el.id;
+    });
+    document.querySelectorAll('[data-id]').forEach(b => b.classList.toggle('active', b.dataset.id === active));
+    document.querySelectorAll('[data-dot]').forEach(d => d.classList.toggle('active', d.dataset.dot === active));
+    ticking = false;
+  });
+});
+</script>
+</body>
+</html>
