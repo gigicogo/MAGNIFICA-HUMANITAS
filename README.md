@@ -4,6 +4,9 @@
 
 Il progetto non vuole sostituire la lettura del documento originale: vuole mostrare come l’AI possa aiutare a organizzare contenuti complessi in un percorso esplorativo, mantenendo sempre il collegamento alla fonte ufficiale.
 
+![Uploading Screenshot 2026-10-30 alle 17.41.46.png…]()
+
+
 ## 🎯 L’idea
 
 Ho scritto un prompt articolato per trasformare l’enciclica in un sito web a sezioni, con:
