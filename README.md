@@ -4,7 +4,8 @@
 
 Il progetto non vuole sostituire la lettura del documento originale: vuole mostrare come l’AI possa aiutare a organizzare contenuti complessi in un percorso esplorativo, mantenendo sempre il collegamento alla fonte ufficiale.
 
-![Uploading Screenshot 2026-10-30 alle 17.41.46.png…]()
+<img width="1698" height="751" alt="Screenshot 2026-10-30 alle 17 41 46" src="https://github.com/user-attachments/assets/3b3d0dd4-45d1-48a4-a5da-5afb4c2c7898" />
+
 
 
 ## 🎯 L’idea
